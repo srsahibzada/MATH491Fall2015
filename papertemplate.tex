@@ -4,6 +4,11 @@
 \usepackage{graphicx}
 \usepackage{bm}
 
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{dfn}{Definition}[section]
 
 \begin{document}
 
@@ -71,6 +76,18 @@ Dr. Sara \textsc{Pollock}
 \newpage
 
 \section{Introduction}
+
+We first introduce a definition:
+
+\begin{dfn}
+Two positive integers $a$ and $b$ are \textit{friendly} if $\sigma(a)/a = \sigma(b)/b$, where $\sigma(n)$ is the sum of the positive integer divisors of $n$.
+\end{dfn}
+
+The function $\sigma(n)/n$ is called the \textit{abundancy function}. A positive integer $n$ is called \textit{abundant} if $\sigma(n) > n$, \textit{deficient} if $\sigma(n) < n$, and \textit{perfect} if $\sigma(n) = n$. Thus, all the perfect numbers are pairwise friendly as the abundancy function of each is 1. A number is called \textit{solitary} if it is not friendly with any other number---hence, all prime numbers are solitary.
+
+The question we will take a computational approach to attempt to answer in this investigation is whether or not 10 is a solitary number. This is an open problem, and may not be feasible to answer in a semester-long project---instead, we may attempt to determine, with lots of data on the abundancy function, the chance that 10 is solitary. The results of this computation may lead directly into results about other numbers (for example, it is also unknown whether 14, 15, among many other numbers are solitary). The applications of this result may lead to interesting results about perfect numbers, which there are many open problems about, including whether or not all perfect numbers are even, or whether there are infinitely many of them.
+
+There are several papers in which some numbers were proven to be solitary, such as 18. There are also papers in which possibilities for friends of 10 are narrowed down.
 $ $ \indent 
 
 \section{Theoretical Analysis: Neural Networks}
