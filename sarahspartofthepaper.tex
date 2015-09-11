@@ -79,33 +79,29 @@ Dr. Sara \textsc{Pollock}
 \newpage
 
 \section{Introduction}
-\begin{dfn}
-Two positive integers $a$ and $b$ are \textit{friendly} if $\sigma(a)/a = \sigma(b)/b$, where $\sigma(n)$ is the sum of the positive integer divisors of $n$.
-\end{dfn}
 
-The function $\sigma(n)/n$ is called the \textit{abundancy function}. A positive integer $n$ is called \textit{abundant} if $\sigma(n) > n$, \textit{deficient} if $\sigma(n) < n$, and \textit{perfect} if $\sigma(n) = n$. Thus, all the perfect numbers are pairwise friendly as the abundancy function of each is 1. A number is called \textit{solitary} if it is not friendly with any other number---hence, all prime numbers are solitary.
 
-This investigation also seeks to evaluate the extent to which the abundancy function may be modeled in order to predict prime numbers. In particular, with the consideration that the abundancy of any prime p is $\frac{p+1}{p}$, it is clear that this function will asymptotically approach 1 for prime inputs. This investigation will perform computations to attempt to fit the abundancy curve and verify it against the first million prime numbers. This computation may provide insight into the distribution of primes, and potentially have applications in primality testing.
+
+
+This investigation seeks to evaluate the extent to which the abundancy function, $sig(n)/n$, may be modeled in order to predict prime numbers. In particular, with the consideration that the abundancy of any prime p is $\frac{p+1}{p}$, it is clear that this function will asymptotically approach 1 for prime inputs. This investigation will perform computations to attempt to fit the abundancy curve and verify it against the first million prime numbers. This computation may provide insight into the distribution of primes, and potentially have applications in primality testing.
 
 There are several papers in which some numbers were proven to be solitary, such as 18. There are also papers in which possibilities for friends of 10 are narrowed down.
 $ $ \indent 
 
-\section{Theoretical Analysis: Neural Networks}
-\subsection{Artificial Neural Networks and their Architectures}
-
-\subsection{The Neuron}
-
-
-\subsection{Network Architectures}
-
-\subsubsection{Feed-Forward Networks}
-
-\subsubsection{Recurrent Networks}
-
-\subsection{Learning}
- 
+\section{Theoretical Analysis: Primality Testing and Abundancy}
+\subsection{Abundant Numbers and Related Concepts}
+Two positive integers $a$ and $b$ are \textit{friendly} if $\sigma(a)/a = \sigma(b)/b$, where $\sigma(n)$ is the sum of the positive integer divisors of $n$.
+The function $\sigma(n)/n$ is called the \textit{abundancy function}. A positive integer $n$ is called \textit{abundant} if $\sigma(n) > n$, \textit{deficient} if $\sigma(n) < n$, and \textit{perfect} if $\sigma(n) = n$. Thus, all the perfect numbers are pairwise friendly as the abundancy function of each is 1. A number is called \textit{solitary} if it is not friendly with any other number---hence, all prime numbers are solitary.
+\\
+The abundancy function does not appear to follow any particular distribution, as evidenced in the below graph of $sig(n)$ vs $n$: 
+\includegraphics[scale=0.5]{sign_vs_n_large_nums.png}. \\ \\A distribution for abundant numbers is known; a function to fit the abundancy function, however, is not. \\
 
 
+\subsection{Primality Testing}
+
+Finding large primes is significant problem in number theory. There are many known probabilistic algorithms for primality testing, such as the Miller-Rabin primality test, as well as some known deterministic algorithms. 
+
+%TAYLOR TAKE THE WHEEL
 
 
 \section{Computational Approaches}$ $
@@ -117,7 +113,7 @@ All calculations were performed in Python 2.7, utilizing Matplotlib for graph re
 \section{Results}$ $
 The abundancy function, when given prime inputs, has results as below:
 \includegraphics[scale=0.5]{figure_1.png}. 
-\\ For all integer inputs, it is as below \\
+\\ For all integer inputs, it is as below \\ \\
 \includegraphics[scale=0.5]{with_primes_small.png}
 \\ The ratio of $sig(n)$ to $n$ was also graphed. It is relevant to note that due to the nature of the $sig(n)$ function for prime numbers, there is a strong linear correlation between $sig(n)$ and $n$.
 \includegraphics[scale=0.5]{num_vs_denom_1_to_100.png}.
@@ -131,7 +127,7 @@ A random sample was taken from the aforementioned subssets of the first million 
 \\
 \includegraphics[scale=0.5]{Untitled3.png}
 
-\\ The equations obtained were $-0.047ln(x) + 1.5$, $-0.024ln(x) + 1.2$, and $-0.023ln(x) + 1.14$, where x represents the index of the prime in the set of all primes; respectively, each had $R^{2}$ values of -61.229, -3.4871, and 0.5. Correlations are weak to moderate; two out of the three are negative. When tested, each equation produced zero correct results for primes, implying that while each might be approximately accurate, this curve is in no way capable of replacing a deterministic primality test.
+The equations obtained were $-0.047ln(x) + 1.5$, $-0.024ln(x) + 1.2$, and $-0.023ln(x) + 1.14$, where x represents the index of the prime in the set of all primes; respectively, each had $R^{2}$ values of -61.229, -3.4871, and 0.5. Correlations are weak to moderate; two out of the three are negative. When tested, each equation produced zero correct results for primes, implying that while each might be approximately accurate, this curve is in no way capable of replacing a deterministic primality test.
 \section{Discussion}$ $
 
 It is clear that the abundancy function cannot be fitted with a logarithmic curve of the form $f(x) = aln(x) + b$. No numbers were correctly matched by any of the equations determined for each sample, and the correlations determined were weak to moderate. It is not possible that the accuracy of each equation could be improved with a larger sample size of primes: none of the curves obtained will asymptotically approach 1. Future research should consider a better fit to the abundancy function and perhaps first analyze the rate at which it converges to 1. Least-squares regression and polynomial interpolation are other methods which might be feasibly be implemented over a longer time span.
@@ -141,12 +137,12 @@ It is clear that the abundancy function cannot be fitted with a logarithmic curv
 
 \indent  
 \section{Individual Contributions}
-\subsection{Stephen Capps}$ $
-\indent 
+\subsection{Daniel Whatley}$ $
+\indent Performed literary  investigations on friendly numbers and the abundancy function. 
 \subsection{Sarah Sahibzada}$ $
 \indent Performed computational investigations on the densities of the abundancy function, distribution of friendly numbers, and the convergence of the abundancy function for the prime numbers. 
 \subsection{Taylor Wilson}$ $
-\indent 
+\indent Performed literary  investigations on friendly numbers and the abundancy function; investigated primality testing.
 
 \newpage
 \section{References}
