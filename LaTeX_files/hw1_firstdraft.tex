@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym,paralist}
+
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{resources}{Resources}
+
+\newcommand{\name}[1]{\noindent\textbf{Name: Sarah Sahibzada}}
+\newcommand{\honor}{\noindent On my honor, as an Aggie, I have neither
+  given nor received any unauthorized aid on any portion of the
+  academic work included in this assignment. Furthermore, I have
+  disclosed all resources (people, books, web sites, etc.) that have
+  been used to prepare this homework. \\[1ex]
+ \textbf{Signature:} Sarah R. Sahibzada }
+
+ 
+\newcommand{\checklist}{\noindent\textbf{Checklist:}
+\begin{compactitem}[$\Box$] 
+\item Did you add your name? 
+\item Did you disclose all resources that you have used? \\
+(This includes all people, books, websites, etc. that you have consulted)
+\item Did you sign that you followed the Aggie honor code? 
+\item Did you solve all problems? 
+\item Did you submit (a) your latex source file and (b) the resulting pdf file
+  of your homework?
+\item Did you submit (c) a hardcopy of the pdf file in class? 
+\end{compactitem}
+}
+
+\newcommand{\problemset}[1]{\begin{center}\textbf{Problem Set #1}\end{center}}
+\newcommand{\duedate}[2]{\begin{quote}\textbf{Due dates:} Electronic submission of .tex
+    and .pdf files of this homework is due on \textbf{#1} on e-campus
+    (as a turnitin assignment), a signed paper copy
+    of the pdf file is due on \textbf{#2} at the beginning of
+    class. \end{quote} }
+
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+
+
+\begin{document}
+\problemset{1}
+\centerline{CSCE 411-502 (Dr. Klappenecker) }
+
+\duedate{9/2/2015 before 11:00am}{9/2/2015}
+\name{ (put your name here)}
+\begin{resources} (All people, books, articles, web pages, etc. that
+  have been consulted when producing your answers to this homework)
+\end{resources}
+\honor
+
+\newpage
+
+Get familiar with \LaTeX. Watch the (optional) video. All exercises
+are from the lecture notes that were (or will) be handed out in
+class. 
+\begin{problem} (10 points)
+Exercise 7.2. 
+\end{problem}
+\begin{solution}
+\[H_{x} = 1 + 2 + . . . \frac{1}{x} = \sum\limits_{i=1}^x \frac{1}{x}\]
+By definition, \[\Delta f(x) = f(x+1) - f(x) \]
+Therefore, \[\Delta H_{x} = H_{x+1} - H_{x}\]
+\[=\sum\limits_{i=1}^{x+1} \frac{1}{x} - \sum\limits_{i=1}^x \frac{1}{x}\]
+\[=\frac{1}{x+1} + \sum\limits_{i=1}^x \frac{1}{x} - \sum\limits_{i=1}^x \frac{1}{x} \]
+\[=\frac{1}{x+1}\]
+It has been shown above that \[\Delta H_{x} = \frac{1}{x+1} \] . 
+By the linearity of the difference operator, the statement \[\Delta (H_{x}\times x-x)\] is equivalent to \[\Delta (H_{x}\times x) - \Delta x\ = \Delta (H_{x}\times x) -1\]
+Solving for the first term, we obtain \[\Delta H_{x}S_{x}- H_{x} \Delta{x}\]
+\[= \frac{1}{x+1}\times (x+1) + H_{x}\]
+Substituting this into the original equation:
+\[H_{x} + 1 - 1 = H_{x}\]
+Thus,\[\Delta((H_{x}\times x) - x) = H_{x}\]
+
+\end{solution}
+
+\begin{problem} (10 points)
+Exercise 7.4.
+\end{problem}
+\begin{solution}
+
+By definition of falling factorial, \[x^{\underline{k}} = x(x-1)...(x-(k+1))\].
+Applying the identity \[\frac{x^{\underline{k+1}}}{x^{\underline{k}}} = x - k\] to the initial equation and re-arranging factors:\[\frac{x^{\underline{k+1}} + kx^{k}}{x^{\underline{k}}}  = \frac{x^{\underline{k+1}}}{x^{\underline{k}}} + \frac{kx^{\underline{k}}}{x^{\underline{k}}}\]
+\[= (x - k) + k = x\]
+Applying the same identity to the right-hand side of the equation, we obtain \[\frac{xx^{\underline{k}}}{x^{\underline{k}}} = x\]
+Therefore, through application of this identity, both the left and right hand sides of this equation are equivalent. Thus, it can be said that \[x^{\underline{k+1}}+kx^{\underline{k}} = xx^{\underline{k}}\]
+\end{solution}
+
+\begin{problem} (10 points)
+Exercise 7.8. 
+\end{problem}
+\begin{solution}
+It is known by the definition of the difference operator that \[\Delta x^n = (x+1)^n - x^n\]. The binomial theorem may be used to expand this polynomial: \[ (x+1)^n - x = \bigg(\sum\limits_{k=0}^n {{n \choose {k}} (x+1)^{n-k}}\bigg) - x^n\]. It may be shown by induction on n that this is the expression for \[\Delta x^n\] for all positive integers n. Indeed, we can see that this holds for the case n = 1: \[\Delta x^1 = \Delta x = 1 = (x + 1)^1 - x\]. We may now state our inductive hypothesis:\[ (x+1)^n - x = \bigg(\sum\limits_{k=0}^n {{n \choose {k}} (x+1)^{n-k}}\bigg) - x^n\]. By induction, we seek to prove that for n + 1, we obtain: \[=\bigg(\sum\limits_{k=0}^{n+1} {{n+1 \choose {k}} (x+1)^{(n+1)-k}}\bigg) - x^{n+1}\]
+This is shown below:
+\[\Delta x^{n+1} = (x+1)^{n+1} - x^{n+1}\]
+\[= (x+1)(x+1)^n - x^{n+1}\]
+\[= (x+1)\bigg(\sum\limits_{k=0}^n {{n \choose {k}} (x+1)^{n-k}}\bigg) - x^{n+1}\]
+\[=\]
+
+
+\end{solution}
+
+\begin{problem} (10 points)
+Exercise 7.14.
+\end{problem}
+\begin{solution}
+Applying the difference operator on both sides of the equation:
+\[\Delta\big(\Delta^{-1}\big(\frac{1}{2^x}\big)\big) = \Delta\big(\frac{-1}{2^{x-1}}+C\big) \]
+\[\frac{1}{2^{x}} = \Delta\big(\frac{-1}{2^{x-1}}+C\big)\]
+\[\Delta\frac{-1}{2^{x}} + \Delta C = \Delta\frac{-1}{2^{x-1}}+0 = \frac{-1}{2^{x}} + \frac{1}{2^{x-1}}\]
+\[= - \frac{1}{2(2^{x-1})} +\frac{1}{2^{x-1}} = \big(\frac{1}{2^{x-1}} \big)\big(-\frac{1}{2}+1 \big) \]
+\[= \big(\frac{1}{2}\big)\big(\frac{1}{2^{x-1}}\big) = \frac{1}{2^{x}} \]
+\end{solution}
+
+\begin{problem} (10 points)
+Exercise 7.16 (use finite difference calculus).
+\end{problem}
+\begin{solution}
+\[\Delta^{-1} x^{2} = \frac{S(2,2)}{3}x^{\underline{3}} + \frac{S(2,1)}{2}x^{\underline{2}}+ \frac{S(2,0)}{1}x^{\underline{1}}\]
+\[= \frac{1}{3}(x)(x-1)(x-2) + \frac{1}{2}(x)(x-1)\]
+\[\sum\limits_{k=1}^n k^{2} = \frac{1}{3}(n+1)^{\underline{3}} + \frac{1}{2}(n+1)^{\underline{2}} = \frac{1}{3}(n+1)(n)(n-1_ + \frac{1}{2}(n+1)(n)\]
+\[\frac{2}{6}(n^{2}-1)(n) + \frac{3}{6}(n^{2}+n) = \frac{2}{6}(n^{3}-n) + \frac{3}{6}(n^{2}+n)\]
+\[= \frac{2}{6}n^{3} - \frac{2}{6}n + \frac{3}{6}n^{2} + \frac{3}{6}n = \frac{2n^{3} + 3n^{2} + n}{6}\]
+\[=\frac{(n)(2n^{2}+3n+1)}{6} \]
+\[=  \frac{(n)(2n+1)(n+1)}{6}\]
+\end{solution}
+
+\begin{problem} (10 points)
+Exercise 7.17.
+\end{problem}
+\begin{solution}
+Note that the sum \[\frac{1}{{1\times{2}}} + \frac{1}{2\times{3}} + . . .\frac{1}{n\times{(n+1)}}= \sum\limits_{k=0}^{n-1} x^{\underline{-2}}\] since this will have first term \[\frac{1}{1\times{2}}\] and nth term \[\frac{1}{n\times{(n+1)}}\].
+We proceed as in the previous problem:
+\[\Delta^{-1} x^{\underline{-2}} = \frac{1}{-2+1} x^{\underline{-2+1}} = -x^{\underline{-1}}  \]
+Now, applying the fundamental theorem of summation, we get:
+\[-n^{\underline{-1}} - 0^{\underline{-1}} = \frac{-1}{n+1} + 1\]
+\[= 1 - \frac{1}{n+1}\]
+\end{solution}
+
+Watch the video on asymptotic notations. 
+\begin{problem} (10 points)
+Exercise 9.2.
+\end{problem}
+\begin{solution}
+\[ln(exp(n^{a})) \texttt{\char`\~}  ln(exp(n+1)^{a})\] where \[ln(exp(n+1)^{a}) = (n+1)^{a}\] and \[ln(exp(n)) = n\]
+\[\]
+\end{solution}
+
+
+
+
+I will allow that you explore some of the problems in class together with
+your team, \textbf{but} the homework solution must be formulated by
+yourself. Homeworks must be typeset in \LaTeX{}. 
+\begin{solution}
+\end{solution}
+
+
+
+
+
+
+
+
+\goodbreak
+\checklist
+\end{document}

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 OCT 2015 16:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 SEP 2015 16:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**papertemplate.tex
-(./papertemplate.tex
+**sarahspartofthepaper.tex
+(./sarahspartofthepaper.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
@@ -81,8 +81,8 @@ Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 137.
 LaTeX Info: Redefining \bm on input line 203.
 )
-(./papertemplate.aux)
-\openout1 = `papertemplate.aux'.
+(./sarahspartofthepaper.aux)
+\openout1 = `sarahspartofthepaper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -172,86 +172,110 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./papertemplate.toc)
+(./sarahspartofthepaper.toc)
 \tf@toc=\write3
-\openout3 = `papertemplate.toc'.
+\openout3 = `sarahspartofthepaper.toc'.
 
- [1] [2] <figure_1.png, id=23, 578.16pt x 433.62pt>
-File: figure_1.png Graphic file (type png)
+ [1]
+Overfull \hbox (18.14455pt too wide) in paragraph at lines 93--93
+[]\OT1/cmr/bx/n/14.4 Theoretical Anal-y-sis: Pri-mal-ity Test-ing and Abun-
+ []
 
-<use figure_1.png>
-Package pdftex.def Info: figure_1.png used on input line 119.
+<sign_vs_n_large_nums.png, id=16, 578.16pt x 433.62pt>
+File: sign_vs_n_large_nums.png Graphic file (type png)
+
+<use sign_vs_n_large_nums.png>
+Package pdftex.def Info: sign_vs_n_large_nums.png used on input line 96.
 (pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
- <with_primes_small.png, id=25, 578.16pt x 433.62pt>
+
+Overfull \hbox (173.4035pt too wide) in paragraph at lines 95--97
+\OT1/cmr/m/n/10.95 tion, as ev-i-denced in the be-low graph of $\OML/cmm/m/it/1
+0.95 sig\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n\OT1/cmr/m/n/10.95 )$ vs $\OML
+/cmm/m/it/10.95 n$\OT1/cmr/m/n/10.95 : [] 
+ []
+
+[2] [3 <./sign_vs_n_large_nums.png>]
+<figure_1.png, id=29, 578.16pt x 433.62pt>
+File: figure_1.png Graphic file (type png)
+ <use figure_1.png>
+Package pdftex.def Info: figure_1.png used on input line 121.
+(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+
+<with_primes_small.png, id=30, 578.16pt x 433.62pt>
 File: with_primes_small.png Graphic file (type png)
 
 <use with_primes_small.png>
-Package pdftex.def Info: with_primes_small.png used on input line 121.
+Package pdftex.def Info: with_primes_small.png used on input line 123.
 (pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
 
-<num_vs_denom_1_to_100.png, id=26, 578.16pt x 433.62pt>
+<num_vs_denom_1_to_100.png, id=31, 578.16pt x 433.62pt>
 File: num_vs_denom_1_to_100.png Graphic file (type png)
 
 <use num_vs_denom_1_to_100.png>
-Package pdftex.def Info: num_vs_denom_1_to_100.png used on input line 123.
+Package pdftex.def Info: num_vs_denom_1_to_100.png used on input line 125.
 (pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
 
-Overfull \hbox (92.97156pt too wide) in paragraph at lines 117--124
+Underfull \hbox (badness 10000) in paragraph at lines 119--126
+
+ []
+
+
+Overfull \hbox (92.97156pt too wide) in paragraph at lines 119--126
 \OT1/cmr/m/n/10.95 cor-re-la-tion be-tween $\OML/cmm/m/it/10.95 sig\OT1/cmr/m/n
 /10.95 (\OML/cmm/m/it/10.95 n\OT1/cmr/m/n/10.95 )$ and $\OML/cmm/m/it/10.95 n$\
 OT1/cmr/m/n/10.95 . []. 
  []
 
-[3 <./figure_1.png>] <Untitled1.png, id=31, 362.3136pt x 217.7736pt>
+[4 <./figure_1.png>] <Untitled1.png, id=36, 362.3136pt x 217.7736pt>
 File: Untitled1.png Graphic file (type png)
 
 <use Untitled1.png>
-Package pdftex.def Info: Untitled1.png used on input line 128.
+Package pdftex.def Info: Untitled1.png used on input line 130.
 (pdftex.def)             Requested size: 181.15636pt x 108.88652pt.
- <Untitled2.png, id=32, 362.7954pt x 218.2554pt>
+ <Untitled2.png, id=37, 362.7954pt x 218.2554pt>
 File: Untitled2.png Graphic file (type png)
 
 <use Untitled2.png>
-Package pdftex.def Info: Untitled2.png used on input line 130.
+Package pdftex.def Info: Untitled2.png used on input line 132.
 (pdftex.def)             Requested size: 181.39725pt x 109.12743pt.
- <Untitled3.png, id=33, 362.7954pt x 218.2554pt>
+ <Untitled3.png, id=38, 362.7954pt x 218.2554pt>
 File: Untitled3.png Graphic file (type png)
 
 <use Untitled3.png>
-Package pdftex.def Info: Untitled3.png used on input line 132.
+Package pdftex.def Info: Untitled3.png used on input line 134.
 (pdftex.def)             Requested size: 181.39725pt x 109.12743pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--133
+Underfull \hbox (badness 10000) in paragraph at lines 129--135
 
  []
 
-[4 <./with_primes_small.png> <./num_vs_denom_1_to_100.png>] [5 <./Untitled1.png
-> <./Untitled2.png> <./Untitled3.png>] [6] [7] (./papertemplate.aux) ) 
+[5 <./with_primes_small.png> <./num_vs_denom_1_to_100.png>] [6 <./Untitled1.png
+> <./Untitled2.png> <./Untitled3.png>] [7] [8] (./sarahspartofthepaper.aux) ) 
 Here is how much of TeX's memory you used:
- 1840 strings out of 493117
- 26556 string characters out of 6135433
- 84505 words of memory out of 5000000
- 5285 multiletter control sequences out of 15000+600000
+ 1845 strings out of 493117
+ 26772 string characters out of 6135433
+ 83505 words of memory out of 5000000
+ 5289 multiletter control sequences out of 15000+600000
  16845 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,5n,23p,714b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/loc
-al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local
-/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local
-/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on papertemplate.pdf (8 pages, 287519 bytes).
+ 37i,5n,23p,721b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
+</
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on sarahspartofthepaper.pdf (9 pages, 432072 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
