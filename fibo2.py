@@ -1,4 +1,5 @@
 import math
+import numpy
 
 def naive_fibonacci(which):
 	if which <= 1:
@@ -24,6 +25,38 @@ def matrix_mult(a,b):
 				#print newlist
 			result.append(newlist)
 	#print result 
+	return result
+def smarter_matrix_mult(a,b):
+	x = numpy.matrix(a)
+	y = numpy.matrix(b)
+	return ((x*y).tolist())[0]
+
+def smarter_matrix_mult2(a,b):
+	a_cols = len(a[0])
+	a_rows = len(a)
+	b_cols = len(b[0])-1
+	b_rows = len(b)
+
+	result = []
+	if a_rows != b_cols+1:
+		return -1
+	else:
+		for t in range(a_rows):
+			result.append([0])
+		for t2 in range(a_rows):
+			for t3 in range(b_cols):
+				result[t2].append(0)
+		for x in range(a_rows):
+			for y in range(b_cols+1):
+				for z in range(b_rows):
+					print result[x][y]
+					print a[x][z]
+					print b[z][y]
+					print "--------"
+					result[x][y] += a[x][z] * b[z][y] 
+	
+	print result
+	print
 	return result
 
 def factorial_list(quant):
@@ -53,6 +86,19 @@ def matrix_fibo(which):
 		ident = matrix_mult(ident,multiplier)
 	return ident[0][0]
 
+#please use this rather than the recursive one, it is substantially faster even with o(n^3) matrix mult
+def matrix_lucas(which):
+	ident = [[1,2],[0,1]] #immutable tuples. don't want to change this
+	multiplier = [[1,1],[1,0]]
+	for x in range(1,which):
+		ident = smarter_matrix_mult2(ident,multiplier)
+		print ident
+	else:
+		if ident[0][1] == 2:
+			return 1
+		return ident[0][0]
+
+
 def simple_conjecture_test(filename,mode):
 	fibo_list = []
 	product = 1
@@ -72,11 +118,20 @@ def simple_conjecture_test(filename,mode):
 
 
 def main():
-	filename = "fibonacci_short3.txt"
+
+	filename = raw_input("Enter the file to which to write: ")
+	mode = raw_input("fibonacci (f) or lucas (l) ?")
+	num = int(raw_input("Enter how many numbers to generate: "))
 	with open(filename, 'a') as filewriter:
-		for x in range(0,15): 
+		for x in range(0,num): 
 			if (x == 0):
 				continue
-			filewriter.write(str(matrix_fibo(x)) + '\n')
+			if mode == 'f':
+				filewriter.write(str(matrix_fibo(x)) + '\n')
+			elif mode == 'l':
+				if x == 0:
+					filewriter.write("1\n")
+				else:
+					filewriter.write(str(matrix_lucas(x)) + '\n')
 
 main()
