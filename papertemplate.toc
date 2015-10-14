@@ -7,11 +7,11 @@
 \contentsline {subsubsection}{\numberline {2.3.2}Recurrent Networks}{2}
 \contentsline {subsection}{\numberline {2.4}Learning}{2}
 \contentsline {section}{\numberline {3}Computational Approaches}{2}
-\contentsline {subsection}{\numberline {3.1}Implementation Detail and Process}{2}
+\contentsline {subsection}{\numberline {3.1}Implementation Detail and Process}{3}
 \contentsline {section}{\numberline {4}Results}{3}
 \contentsline {section}{\numberline {5}Discussion}{5}
-\contentsline {section}{\numberline {6}Individual Contributions}{5}
-\contentsline {subsection}{\numberline {6.1}Stephen Capps}{5}
-\contentsline {subsection}{\numberline {6.2}Sarah Sahibzada}{5}
-\contentsline {subsection}{\numberline {6.3}Taylor Wilson}{5}
-\contentsline {section}{\numberline {7}References}{6}
+\contentsline {section}{\numberline {6}Individual Contributions}{6}
+\contentsline {subsection}{\numberline {6.1}Stephen Capps}{6}
+\contentsline {subsection}{\numberline {6.2}Sarah Sahibzada}{6}
+\contentsline {subsection}{\numberline {6.3}Taylor Wilson}{6}
+\contentsline {section}{\numberline {7}References}{7}
