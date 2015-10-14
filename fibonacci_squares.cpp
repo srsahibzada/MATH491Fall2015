@@ -27,7 +27,7 @@ int powmod(int base, int exp, int mod)
 
 // standard (p+1)/4 algo for qr
 // Precondition: p = 3 mod 4.
-string qr_mod_p(int p)
+string qr_mod_p(int p) //quadratic residues represented as binary string
 {
     int k = (p + 1)/4;
     
@@ -48,6 +48,7 @@ int main()
     primes[1] = 1;
     
     // sieve of Eratosthenes
+    //to do: more efficient prime generator than sieve (sarah)
     for(int i = 2; i < 5000; ++i) {
         if(primes[i] == 0) {
             for(int j = 2*i; j < 5000; j += i)
@@ -59,14 +60,16 @@ int main()
     int cur = 1;
     int total = 0;
     while(true) {
+        //todo: parallelize this (sarah)
+        
         ++cur;
-        while(cur % 4 != 3 || primes[cur] == 1) ++cur;
+        while(cur % 4 != 3 || primes[cur] == 1) ++cur; //mod 4 primes only? or just generate those from the get go (sarah)
         cout << "Current prime: " << cur << endl;
         
-        string s = qr_mod_p(cur);
+        string s = qr_mod_p(cur); 
         int f1 = 1;
         int f2 = 1;
-        for(int i = 3; i < 1000000; ++i) {
+        for(int i = 3; i < 1000000; ++i) { //todo: parallelze this (sarah)
             int f3 = (f1 + f2) % cur;
             if(s[f3] == '0' && possible[i] != 1) {
                 possible[i] = 1;
@@ -82,7 +85,7 @@ int main()
     
     for(int i = 1; i < 1000000; ++i) {
         if(possible[i] == 0)
-            cout << "F_" << i << " may be a perfect square" << endl;
+            cout << "F_" << i << " may be a perfect square" << endl; //make sure these are ordered with pthreads (sarah)
     }
     
     cout << "Nothing else up to 999999 works.\n";
