@@ -87,17 +87,23 @@ The \textit{Fibonacci sequence}, $\{F_n\}$, is defined as follows: \[ F_1 = 1, \
 
 It was a long-standing conjecture, until it was proved in 1964 [2], that the only Fibonacci numbers that are perfect squares are $F_1 = 1$, $F_2 = 1$, and $F_12 = 144$. M. Wunderlich[1] described an ingenious ``exclusion'' method to calculate which Fibonacci numbers, out of the first million, can possibly be perfect squares. The method does not prove that any Fibonacci numbers are perfect squares, rather it rules out those that are not.
 
-Consider a prime $p$. We first calculate the period of the Fibonacci numbers $\pmod p$, denoted here as the \textit{Fibonacci period} of $p$. For example, the Fibonacci period of $p = 7$ is 16, as the Fibonacci sequence $\pmod 7$ repeats after 16 steps. Specifically, the first 16 Fibonacci numbers $\pmod{7}$ are: \[ 1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, 0, \] after which it repeats $1, 1, 2, 3, 5, \dots$ again.
+Consider a prime $p$. We first calculate the period of the Fibonacci numbers $\pmod p$, denoted here as the \textit{Fibonacci period} of $p$. For example, the Fibonacci period of $p = 7$ is 16, as the Fibonacci sequence $\pmod 7$ repeats after 16 steps. Specifically, the first 16 Fibonacci numbers $\pmod{7}$ are: \[ 1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, 0, \] after which it repeats $1, 1, 2, 3, 5, \dots$ again. Because the numbers $\pmod{7}$ that are quadratic non-residues are 3, 5, and 6, replacing each quadratic residue by a 1 and each quadratic non-residue by a 0 gives the binary string \[111001010001101.\]
 
-Take those residues $\pmod{p}$ that are quadratic non-residues $\pmod{p}$. If any Fibonacci number is congruent to a quadratic non-residue $\pmod{7}$, then it can never be a perfect square of any integer. Repeat, until the number of possible square Fibonacci numbers is down to a reasonable number to analyze. 
+Take those residues of Fibonacci numbers $\pmod{p}$ that are quadratic non-residues $\pmod{p}$. If any Fibonacci number is congruent to a quadratic non-residue $\pmod{7}$, then it can never be a perfect square of any integer. Repeat, until the number of possible square Fibonacci numbers is down to a reasonable number to analyze.
 
-We also created a data structure to check Lucas number and factorial conjecture... (insert more detail)
+The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. Second, because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers.
+
+Suppose the primes considered are $p_1, p_2, \dots , p_n$, and let the Fibonacci periods of each prime be $d_1, d_2, \dots , d_n$. If a certain positive integer $k$ is such that $F_k$ is a quadratic residue modulo each of the $p_i$, then we know that it is a quadratic residue modulo $\lcm(p_1, \dots , p_n)$. Similarly, if $F_k$ is a quadratic non-residue modulo \textit{one} of the $p_i$, it is a quadratic non-residue modulo $\lcm(p_1, \dots , p_n)$. Thus, we can say that everything that does not work modulo one of the $p_i$ 
+
+We also created a data structure to check Lucas number and factorial conjecture... (insert more detail) We also did identities for Lucas numbers...
 
 \section{Computational Approach}
 
 [1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used was predominantly C++.
 
 Functions to check which numbers are quadratic residues mod a certain prime, to calculate GCDs and LCMs, and to calculate the power of a number modulo another were implemented. The basic algorithm from [1] was also implemented as a preliminary version.
+
+
 
 \section{Results}
 

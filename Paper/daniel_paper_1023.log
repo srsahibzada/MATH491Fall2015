@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.6.4)  20 OCT 2015 18:00
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.6.4)  21 OCT 2015 09:11
 entering extended mode
 **C:/Users/Owner/Documents/GitHub/MATH491Project3/Paper/daniel_paper_1023.tex
 (C:/Users/Owner/Documents/GitHub/MATH491Project3/Paper/daniel_paper_1023.tex
@@ -180,17 +180,40 @@ LaTeX Font Info:    ... okay on input line 9.
 (C:\Users\Owner\Documents\GitHub\MATH491Project3\Paper\daniel_paper_1023.toc)
 \tf@toc=\write3
 
-[1] [2] [3]
+[1]
+! Undefined control sequence.
+<recently read> \lcm 
+                     
+l.96 ...hat it is a quadratic residue modulo $\lcm
+                                                  (p_1, \dots , p_n)$. Simil...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \lcm 
+                     
+l.96 ...it is a quadratic non-residue modulo $\lcm
+                                                  (p_1, \dots , p_n)$. Thus,...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[2] [3]
 (C:\Users\Owner\Documents\GitHub\MATH491Project3\Paper\daniel_paper_1023.aux) )
  
 Here is how much of TeX's memory you used:
- 2044 strings out of 493921
- 26571 string characters out of 3144877
- 80951 words of memory out of 3000000
- 5340 multiletter control sequences out of 15000+200000
+ 2045 strings out of 493921
+ 26574 string characters out of 3144877
+ 81951 words of memory out of 3000000
+ 5341 multiletter control sequences out of 15000+200000
  17967 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,4n,20p,519b,249s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,4n,20p,721b,249s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/P
@@ -204,7 +227,7 @@ x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on daniel_paper_1023.pdf (4 pages, 151221 bytes).
+Output written on daniel_paper_1023.pdf (4 pages, 154295 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
