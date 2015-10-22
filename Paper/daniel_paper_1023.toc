@@ -1,7 +1,9 @@
 \contentsline {section}{\numberline {1}Introduction}{2}
 \contentsline {section}{\numberline {2}Theoretical Analysis}{2}
-\contentsline {section}{\numberline {3}Computational Approach}{3}
-\contentsline {section}{\numberline {4}Results}{3}
-\contentsline {section}{\numberline {5}Conclusion}{3}
-\contentsline {section}{\numberline {6}Individual Contributions}{3}
-\contentsline {section}{\numberline {7}References}{3}
+\contentsline {subsection}{\numberline {2.1}Fibonacci Squares}{2}
+\contentsline {subsection}{\numberline {2.2}Lucas Numbers and Associated Identities}{3}
+\contentsline {section}{\numberline {3}Computational Approach}{4}
+\contentsline {section}{\numberline {4}Results}{4}
+\contentsline {section}{\numberline {5}Conclusion}{4}
+\contentsline {section}{\numberline {6}Individual Contributions}{4}
+\contentsline {section}{\numberline {7}References}{4}
