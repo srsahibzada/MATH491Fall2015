@@ -129,9 +129,33 @@ Suppose we take a list of primes: $p_1, p_2, \dots , p_n$, and let the Fibonacci
 The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. The computation here is superior for another reason: any $F_k$ with $k \not\equiv a \pmod L$ where $F_a$ is a perfect square is therefore also not a perfect square. This is because if $k \not\equiv a \pmod L$, then there exists some $d_i$ for which $k \not\equiv a \pmod d_i$, which also means that $F_k$ is not a quadratic residue modulo $p_i$, which means $F_k$ cannot be a perfect square. Because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers, but the computation here can. This is how the approach was optimized.
 
 \subsection{Lucas Numbers and Various Identities}
-The generation of Lucas numbers was done in two key ways: one involving a 
+Insofar as the Lucas sequence and the Fibonacci sequence are closely related, it is possible to derive the Lucas numbers from the Fibonacci sequence; furthermore, a similar generator matrix exists for the Lucas numbers as for the Fibonacci numbers. Various methods were used to implement the Lucas number generators, in particular utilizing the identity $L_{n} = F_{n-1} + F_{n+1}$ as well as the matrix identity detailled in the previous section. The generation of Fibonacci numbers relied on the exponentiation of the matrix \[
+\begin{bmatrix}
+1 1\\
+1 0
+\end{bmatrix} =  \begin{bmatrix} 
+	F_{2} F_{1} \\
+	F_{1} F_{0}
+	
+\end{bmatrix}
+\] . This also relied on a naive matrix multiplication that ran with $O(n^{3})$ complexity, making the generation of the $n^{th}$ Fibonacci number, as well as the Lucas numbers derived from it, relatively  computationally expensive. This algorithm was used to generate the first million Lucas numbers.\\
+Another means of generating Lucas numbers is through the matrix method referenced in "On Lucas Numbers by the Matrix Method": in a manner similar to the exponentiation of the aforementioned matrix used to generate Fibonacci numbers, the equations:
+\[
+\begin{bmatrix}
+L_{n+1} \\
+L_{n}
+\end{bmatrix} = Q_{L} \begin{bmatrix} F_{n} \\ F_{n-1}\end{bmatrix}
+\] 
+as well as \\
+\[
+5\begin{bmatrix}
+F_{n+1} \\
+L_{n}
+\end{bmatrix} = Q_{L} \begin{bmatrix} L_{n} \\ L_{n-1}\end{bmatrix}
+\] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$. This was implemented with Sage using its pre-optimized matrix constructors and matrix multiplication. The Sage library contains an implementation of Strassen matrix multiplication, which runs in $O(n^{2.81})$: over very large numbers, this is a marked improvement over the $O(n^{3})$ complexity of the naive matrix multiplication. This was also used to generate the first million Lucas numbers.
 
 
+The Fibonacci numbers, as well as the Lucas numbers, generated above, were used to investigate a series of identities involving sums and products of Fibonacci and Lucas numbers. Due to the nature of the BigInteger API, the sole limitation on the maximum precision allowed for this investigation was the availability of memory on the systems on which this code was tested. Each identity was implemented as a part of a larger class called FiboAndLucas, whose design was not fully object-oriented in nature and as such did not utilize many of the object-oriented features offered in Java. In the parallel implementation, each identity was tested from $n, k = 0$ to $n, k = 500$; each identity was tested at all possible values in its own thread. In the serial implementation, each identity was tested from $n,k = 0$ to $n,k = 250$ due to limitations on the system.
 \section{Results and Conclusion}
 \subsection{Fibonacci Squares}
 Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
