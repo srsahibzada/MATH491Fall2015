@@ -129,11 +129,22 @@ The computation in [1] was somewhat limited for two reasons. First, for each pri
 Large lists of Fibonacci and Lucas numbers were generated using a Python script that utilized (matrix identity for fibonacci) in order to generate Fibonacci numbers, and generated Lucas numbers using the Fibonacci sequence. 
 
 
-\section{Results}
+\section{Results and Conclusion}
 
 Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
 
-\section{Conclusion}
+In each run, we got that the only possible Fibonacci numbers that can be perfect squares were the ones with indices $1, 2, 12 \pmod{L}$, confirming the computation done in [1] and the proof done in [2]. Running times on a supercomputer are summarized as follows:
+\vspace{.1in}
+
+\begin{tabular}{ccc}
+\hline
+$L$ & Number of primes & Execution time (s) \\ \hline
+604800 & 103 & 0.88 \\
+907200 & 112 & 1.34 \\
+6350400 & 138 & 9.24 \\
+9072000 & 135 & 12.37 \\
+63504000 & 163 & 105.61 \\ \hline \hline
+\end{tabular}
 
 
 
@@ -150,11 +161,11 @@ Since the value of $L$ cannot be too large for our purposes (the computational s
 \section{References}
 
 \begin{enumerate}
-\item Wunderlich paper (MLA citation)
+\item M. Wunderlich, On the non-existence of Fibonacci Squares, Maths, of Computation, 17 (1963) p. 455. 
 
-\item Paper in which squares conjecture proved
+\item J. H. E. Cohn, ``Square Fibonacci Numbers, Etc.'' Fibonacci Quarterly \textbf{2} 1964, pp. 109-113.
 
-\item Other stuff about other conjectures here
+\item Other papers go here
 \end{enumerate}
 
 \end{document}
