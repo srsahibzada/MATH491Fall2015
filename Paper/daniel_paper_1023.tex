@@ -133,11 +133,10 @@ The generation of Lucas numbers was done in two key ways: one involving a
 
 
 \section{Results and Conclusion}
-
+\subsection{Fibonacci Squares}
 Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
 
-In each run, we got that the only possible Fibonacci numbers that can be perfect squares were the ones with indices $1, 2, 12 \pmod{L}$, confirming the computation done in [1] and the proof done in [2]. Running times on a supercomputer are summarized as follows:
-\vspace{.1in}
+In each run, we got that the only possible Fibonacci numbers that can be perfect squares were the ones with indices $1, 2, 12 \pmod{L}$, confirming the computation done in [1] and the proof done in [2]. Execution times on Ada are summarized as follows:
 
 \begin{tabular}{ccc}
 \hline
@@ -148,6 +147,49 @@ $L$ & Number of primes & Execution time (s) \\ \hline
 9072000 & 135 & 12.37 \\
 63504000 & 163 & 105.61 \\ \hline \hline
 \end{tabular}
+
+\subsection{Lucas Numbers and Various Identities}
+This code was run serially on a Mac operating system; it was not run on Ada. Due to ranging errors, results could be verified only up to $n,k=250$. Results are below:
+\begin{tabular}{ccc}
+\hline
+ Range of n,k & Mac OS (s)  \\ \hline
+50 & 0.274 & 0.004\\
+100 & 0.758 & 0.004 \\
+150 & 1.43 & 0.004 \\
+200 & 2.30 & 0.004 \\
+250 & 3.64 & 0.004 \\ 
+\hline \hline
+\end{tabular}
+As the means of testing each identity was initially $O(n^{2})$, each identity was run in a separate thread of execution. Execution time was recorded on a Mac terminal using the Java Virtual Machine, as well as on Ada. The multi-threaded execution times may be summarized as below:\\
+\begin{tabular}{ccc}
+\hline
+ Range of n,k & Mac OS (s) & Ada (s) \\ \hline
+50 & 0.039 & 0.004\\
+100 & 0.059 & 0.004 \\
+150 & 0.187 & 0.004 \\
+200 & 0.051 & 0.004 \\
+250 & 0.094 & 0.004 \\ 
+300 & 0.077 & 0.004 \\
+350 & 0.104 & 0.005 \\
+400 & 0.189 & 0.004 \\
+450 & 0.3304 & 0.003 \\
+500 & 0.094 &0.004 \\ \hline \hline
+\end{tabular}
+
+The speedup and efficiency up to $n,k=250$ were calculated, as serial code was available only up to this range and on the Mac OS.
+
+\begin{tabular}
+\hline
+ Range of n,k & Speedup  & Efficiency \\ \hline
+50 & 0.195 & 0.001\\
+100 & 0.084 & 0.007 \\
+150 & 0.130 & 0.011 \\
+200 & 0.119 & 0.010 \\
+250 & 0.025 & 0.002 \\ 
+ \hline \hline
+\end{tabular} \\
+Therefore, the maximum speedup obtained over the serial code reduced the execution time to 2.5 percent of its original execution time. No consistent behavior was observed with efficiency, however, except for that the ratio was consistently low. This is likely due to the fact that each computation was performed in an individual thread, thereby utilizing parallelism as a means to accomplish some tasks in parallel, but not taking advantage of the full capacities of either parallelism or the number of threads. It is relevant to note that as the number of threads used in this implementation remained constant, the speedup is simply a scalar multiple of the efficiency, with the other factor being the number of threads used.
+
 
 
 
