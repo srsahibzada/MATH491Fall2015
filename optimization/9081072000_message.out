@@ -1,0 +1,7 @@
+/tmp/cc7JMUqU.o: In function `main':
+fibo_squares_v2.cpp:(.text+0x5f7): relocation truncated to fit: R_X86_64_32S against symbol `possible2' defined in .bss section in /tmp/cc7JMUqU.o
+fibo_squares_v2.cpp:(.text+0x696): relocation truncated to fit: R_X86_64_32S against symbol `possible2' defined in .bss section in /tmp/cc7JMUqU.o
+/tmp/cc7JMUqU.o: In function `__static_initialization_and_destruction_0(int, int)':
+fibo_squares_v2.cpp:(.text+0x7f7): relocation truncated to fit: R_X86_64_32 against `.bss'
+fibo_squares_v2.cpp:(.text+0x80b): relocation truncated to fit: R_X86_64_32 against `.bss'
+collect2: ld returned 1 exit status
