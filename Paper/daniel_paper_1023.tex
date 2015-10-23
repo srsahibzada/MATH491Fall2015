@@ -118,11 +118,13 @@ L_{n}
 \] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$
 
 \section{Computational Approach}
-
+\subsection{Fibonacci Squares}
 [1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used was predominantly C++.
 
-Functions to check which numbers are quadratic residues mod a certain prime, to calculate GCDs and LCMs, and to calculate the power of a number modulo another were implemented. The basic algorithm from [1] was also implemented as a preliminary version.
+Functions to check which numbers are quadratic residues mod a certain prime, to calculate GCDs and LCMs, and to calculate the power of a number modulo another were implemented. The basic algorithm from [1] was also implemented as a preliminary version. This algorithm was also implemented in parallel.
 
+\subsection{Lucas Numbers and Various Identities}
+Large lists of Fibonacci and Lucas numbers were generated using a Python script that utilized (matrix identity for fibonacci) in order to generate Fibonacci numbers, and generated Lucas numbers using the Fibonacci sequence. 
 
 
 \section{Results}
