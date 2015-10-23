@@ -81,51 +81,23 @@ Dr. Sara \textsc{Pollock}
 
 \section{Introduction}
 
-The \textit{Fibonacci sequence}, $\{F_n\}$, is defined as follows: \[ F_1 = 1, \qquad F_2 = 1, \qquad F_n = F_{n - 1} + F_{n - 2} \quad \text{for} \quad n \geq 3. \], with seed values $F_{0} = 0$ and $F_{1} = 1$. Similarly, the Lucas numbers are a sequence of integers defined by the following recurrence: \\  $\[ L_{n} = L_{n-1} + L_{n-2}$\]\\ with seed values $L_{1} = 1$ and $L_{2} = 3$; alternative definitions begin this recurrence as $L_{0} = 2$ and $L_{1} = 1$.In this paper we analyze two conjectures: one about which Fibonacci numbers are perfect squares, and on various identities linking the Fibonacci sequence and the Lucas numbers.
+The \textit{Fibonacci sequence}, $\{F_n\}$, is defined as follows: \[ F_1 = 1, \qquad F_2 = 1, \qquad F_n = F_{n - 1} + F_{n - 2} \quad \text{for} \quad n \geq 3, \] with seed values $F_{0} = 0$ and $F_{1} = 1$. Similarly, the Lucas numbers are a sequence of integers defined by the following recurrence: \[ L_{n} = L_{n-1} + L_{n-2}\] with seed values $L_{1} = 1$ and $L_{2} = 3$; alternative definitions begin this recurrence as $L_{0} = 2$ and $L_{1} = 1$. In this paper we analyze two conjectures: one about which Fibonacci numbers are perfect squares, and on various identities linking the Fibonacci sequence and the Lucas numbers.
 
-These numbers are known to be closely related to the Fibonacci sequence. This was investigated computationally \\
-A number of identities were verified computationally up to the first 175 Lucas and Fibonacci numbers as well.\\
+These numbers are known to be closely related to the Fibonacci sequence. This was investigated computationally.
+
+A number of identities were verified computationally up to the first 175 Lucas and Fibonacci numbers as well.
 
 
-<<<<<<< HEAD
-% Intro to conjecture 1 (somewhat disjointed conjectures here...)
-=======
 \section{Theoretical Analysis}
 \subsection{Fibonacci Squares}
->>>>>>> origin/master
-It was a long-standing conjecture, until it was proved in 1964 [2], that the only Fibonacci numbers that are perfect squares are $F_1 = 1$, $F_2 = 1$, and $F_12 = 144$. M. Wunderlich[1] described an ingenious ``exclusion'' method to calculate which Fibonacci numbers, out of the first million, can possibly be perfect squares. The method does not prove that any Fibonacci numbers are perfect squares, rather it rules out those that are not.
+It was a long-standing conjecture, until it was proved in 1964 [2], that the only Fibonacci numbers that are perfect squares are $F_1 = 1$, $F_2 = 1$, and $F_{12} = 144$. M. Wunderlich[1] described an ingenious ``exclusion'' method to calculate which Fibonacci numbers, out of the first million, can possibly be perfect squares. The method does not prove that any Fibonacci numbers are perfect squares, rather it rules out those that are not.
 
-%Theoretical stuff 
-
-
-
-<<<<<<< HEAD
-
-We also created a data structure to check Lucas number and factorial conjecture... (insert more detail) We also did identities for Lucas numbers...
-
-\section{Computational Approach}
-
-\subsection{Some subsection thingy}
-
-[1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used in this research was predominantly C++.
-
-% this was in theoretical but moved to computational due to more computational content
-% CHECK THESE SENTENCES FOR UNDERSTANDING. Needs to be written to a point where it is understandable.
-
-Consider a prime $p$. We first calculate the period of the Fibonacci numbers $\pmod p$, denoted here as the \textit{Fibonacci period} of $p$. For example, the Fibonacci period of $p = 7$ is 16, as the Fibonacci sequence $\pmod 7$ repeats after 16 steps. Specifically, the first 16 Fibonacci numbers $\pmod{7}$ are: \[ 1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, 0, \] after which it repeats $1, 1, 2, 3, 5, \dots$ again. Because the numbers $\pmod{7}$ that are quadratic non-residues are 3, 5, and 6, replacing each quadratic residue by a 1 and each quadratic non-residue by a 0 gives the binary string \[111001010001101.\] Let this string for each prime $p$ be $S_p$. 
-
-Suppose we take a list of primes: $p_1, p_2, \dots , p_n$, and let the Fibonacci periods of each prime be $d_1, d_2, \dots , d_n$. Take those indices of $S_{p_i}$ that are 0. If any Fibonacci number is congruent to one of these indices mod $d_i$, then it can never be a perfect square of any integer. Such Fibonacci numbers can now be eliminated due to this prime. Repeat for more primes, until the number of possible square Fibonacci numbers is down to a reasonable number to analyze. We expect that approximately half of the Fibonacci numbers will be eliminated at each step, as about half of the integers mod a prime $p$ are quadratic residues. This makes the overall running time $O(\log n)$, where $n$ is the number of Fibonacci numbers considered.
-
-The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. Second, because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers. 
-
-We now describe a method to optimize the approach. 
-=======
-Suppose the primes considered are $p_1, p_2, \dots , p_n$, and let the Fibonacci periods of each prime be $d_1, d_2, \dots , d_n$. If a certain positive integer $k$ is such that $F_k$ is a quadratic residue modulo each of the $p_i$, then we know that it is a quadratic residue modulo $lcm(p_1, \dots , p_n)$. Similarly, if $F_k$ is a quadratic non-residue modulo \textit{one} of the $p_i$, it is a quadratic non-residue modulo $lcm(p_1, \dots , p_n)$. Thus, we can say that everything that does not work modulo one of the $p_i$ 
+In Section 3, we describe some limitations of this approach, and describe an optimization.
 
 \subsection{Lucas Numbers and Associated Identities}
 Insofar as the Fibonacci and Lucas sequences, and their sums, may be developed in different ways with various identities and recurrences, 
-$F_{n+k} + F_{n-k} = F_{n}L_{k}, even k$\\
-$F_{n+k} + F_{n-k} = L_{n}F_{k}, odd k$\\$F_{n+k} - F_{n-k} = F_{n}L_{k}, odd k$ \\ $F_{n+k} - F_{n-k} = L_{n}F_{k}, even k$ \\ $L_{n+k} + L_{n-k} = L_{n}L_{k}, even k$ \\ $L_{n+k} - L_{n-k} = F5_{n}F_{k}, even k$ \\ $L_{n+k} + L_{n-k} = F_{n}L_{k}, even k$\\ It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
+$F_{n+k} + F_{n-k} = F_{n}L_{k}$, even $k$\\
+$F_{n+k} + F_{n-k} = L_{n}F_{k}$, odd $k$\\$F_{n+k} - F_{n-k} = F_{n}L_{k}$, odd $k$ \\ $F_{n+k} - F_{n-k} = L_{n}F_{k}$, even $k$ \\ $L_{n+k} + L_{n-k} = L_{n}L_{k}$, even $k$ \\ $L_{n+k} - L_{n-k}= F5_{n}F_{k}$, even $k$ \\ $L_{n+k} + L_{n-k} = F_{n}L_{k}$, even $k$\\ It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
 \[
 \begin{bmatrix}
 L_{n+1} \\
@@ -142,10 +114,16 @@ L_{n}
 
 \section{Computational Approach}
 \subsection{Fibonacci Squares}
-[1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used was predominantly C++.
+[1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used in this research was predominantly C++.
 
-Functions to check which numbers are quadratic residues mod a certain prime, to calculate GCDs and LCMs, and to calculate the power of a number modulo another were implemented. The basic algorithm from [1] was also implemented as a preliminary version. This algorithm was also implemented in parallel.
->>>>>>> origin/master
+% this was in theoretical but moved to computational due to more computational content
+% CHECK THESE SENTENCES FOR UNDERSTANDING. Needs to be written to a point where it is understandable.
+
+Consider a prime $p$. We first calculate the period of the Fibonacci numbers $\pmod p$, denoted here as the \textit{Fibonacci period} of $p$. For example, the Fibonacci period of $p = 7$ is 16, as the Fibonacci sequence $\pmod 7$ repeats after 16 steps. Specifically, the first 16 Fibonacci numbers $\pmod{7}$ are: \[ 1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, 0, \] after which it repeats $1, 1, 2, 3, 5, \dots$ again. Because the numbers $\pmod{7}$ that are quadratic non-residues are 3, 5, and 6, replacing each quadratic residue by a 1 and each quadratic non-residue by a 0 gives the binary string \[111001010001101.\] Let this string for each prime $p$ be $S_p$. 
+
+Suppose we take a list of primes: $p_1, p_2, \dots , p_n$, and let the Fibonacci periods of each prime be $d_1, d_2, \dots , d_n$. Take those indices of $S_{p_i}$ that are 0. If any Fibonacci number is congruent to one of these indices mod $d_i$, then it can never be a perfect square of any integer. Such Fibonacci numbers can now be eliminated due to this prime. Repeat for more primes, until the number of possible square Fibonacci numbers is down to a reasonable number to analyze. We expect that approximately half of the Fibonacci numbers will be eliminated at each step, as about half of the integers mod a prime $p$ are quadratic residues. If $L = \text{lcm}(d_1,d_2,\dots,d_n)$, the worst case running time of this algorithm is $O(L\log n)$, where $n$ is the number of primes considered.
+
+The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. The computation here is superior for another reason: any $F_k$ with $k \not\equiv a \pmod L$ where $F_a$ is a perfect square is therefore also not a perfect square. This is because if $k \not\equiv a \pmod L$, then there exists some $d_i$ for which $k \not\equiv a \pmod d_i$, which also means that $F_k$ is not a quadratic residue modulo $p_i$, which means $F_k$ cannot be a perfect square. Because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers, but the computation here can. This is how the approach was optimized.
 
 \subsection{Lucas Numbers and Various Identities}
 Large lists of Fibonacci and Lucas numbers were generated using a Python script that utilized (matrix identity for fibonacci) in order to generate Fibonacci numbers, and generated Lucas numbers using the Fibonacci sequence. 
@@ -153,7 +131,7 @@ Large lists of Fibonacci and Lucas numbers were generated using a Python script 
 
 \section{Results}
 
-
+Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
 
 \section{Conclusion}
 
@@ -164,7 +142,7 @@ Large lists of Fibonacci and Lucas numbers were generated using a Python script 
 \begin{enumerate}
 \item Sarah: Wrote code to verify Fibonacci and Lucas sum identities; wrote small scripts to generate Lucas and Fibonacci numbers based on known identities; implemented the Fibonacci squares algorithm in parallel in C; re-implemented the Fibonacci and Lucas sum code in parallel. Developed some theoretical background on the Lucas sequence.
 
-\item Daniel: I wrote a significant portion of the code for 
+\item Daniel: I mainly wrote code for verifying the Fibonacci squares conjecture. I implemented an algorithm to find relatively reasonable Fibonacci periods, generated different files for verification, and implemented various algorithms to find quadratic residues and non-residues, powers of integers modulo others, and other elementary number theory constructs required for thorough analysis of the subject. I also developed theoretical background in this conjecture and for the optimization of the computation in [1]. Finally, I collected results for this conjecture and produced some tables.
 
 \item Taylor:
 \end{enumerate}
@@ -172,7 +150,7 @@ Large lists of Fibonacci and Lucas numbers were generated using a Python script 
 \section{References}
 
 \begin{enumerate}
-\item Wunderlich paper (MLA citation here)
+\item Wunderlich paper (MLA citation)
 
 \item Paper in which squares conjecture proved
 
