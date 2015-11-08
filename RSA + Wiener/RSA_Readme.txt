@@ -1,0 +1,1 @@
+This is the simple underlying RSA program. It is in C++ and utilizes the GMP library (see google drive for documentation); IT WILL NOT RUN  ON YOUR MACHINE UNLESS THIS LIBRARY IS INSTALLED. 

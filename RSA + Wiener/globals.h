@@ -1,0 +1,1 @@
+unsigned long int global_one = 1;
