@@ -3,9 +3,8 @@
 \usepackage{graphicx}
 \usepackage{bm}
 \usepackage{graphicx}
-\usepackage{amsmath}
-
-
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\newtheorem{theorem}{Theorem}
 \begin{document}
 
 
@@ -44,8 +43,8 @@
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
 \emph{Authors:}\\
-Daniel \textsc{Whatley}\\
 Sarah \textsc{Sahibzada}\\
+Daniel \textsc{Whatley}\\
 Taylor \textsc{Wilson}
 \end{flushleft}
 \end{minipage}
@@ -78,31 +77,64 @@ Dr. Sara \textsc{Pollock}
 \tableofcontents
 \newpage
 \newpage
-
 \section{Introduction}
 
-The \textit{Fibonacci sequence}, $\{F_n\}$, is defined as follows: \[ F_1 = 1, \qquad F_2 = 1, \qquad F_n = F_{n - 1} + F_{n - 2} \quad \text{for} \quad n \geq 3. \], with seed values $F_{0} = 0$ and $F_{1} = 1$. Similarly, the Lucas numbers are a sequence of integers defined by the following recurrence: \\  $\[ L_{n} = L_{n-1} + L_{n-2}$\]\\ with seed values $L_{1} = 1$ and $L_{2} = 3$; alternative definitions begin this recurrence as $L_{0} = 2$ and $L_{1} = 1$.In this paper we analyze two conjectures: one about which Fibonacci numbers are perfect squares, and on various identities linking the Fibonacci sequence and the Lucas numbers.
+The \textit{Fibonacci sequence}, $\{F_n\}$, is defined as follows: \[ F_1 = 1, \qquad F_2 = 1, \qquad F_n = F_{n - 1} + F_{n - 2} \quad \text{for} \quad n \geq 3, \] with seed values $F_{0} = 0$ and $F_{1} = 1$. Similarly, the Lucas numbers are a sequence of integers defined by the following recurrence: \[ L_{n} = L_{n-1} + L_{n-2}\] with seed values $L_{1} = 1$ and $L_{2} = 3$; alternative definitions begin this recurrence as $L_{0} = 2$ and $L_{1} = 1$. In this paper we analyze two conjectures: one about which Fibonacci numbers are perfect squares, and on various identities linking the Fibonacci sequence and the Lucas numbers.
 
-These numbers are known to be closely related to the Fibonacci sequence. This was investigated computationally \\
-A number of identities were verified computationally up to the first 175 Lucas and Fibonacci numbers as well.\\
+These numbers are known to be closely related to the Fibonacci sequence. This was investigated computationally.
+
+A number of identities were verified computationally up to the first 500 Lucas and Fibonacci numbers as well.
 
 
 \section{Theoretical Analysis}
 \subsection{Fibonacci Squares}
-It was a long-standing conjecture, until it was proved in 1964 [2], that the only Fibonacci numbers that are perfect squares are $F_1 = 1$, $F_2 = 1$, and $F_12 = 144$. M. Wunderlich[1] described an ingenious ``exclusion'' method to calculate which Fibonacci numbers, out of the first million, can possibly be perfect squares. The method does not prove that any Fibonacci numbers are perfect squares, rather it rules out those that are not.
+It was a long-standing conjecture, until it was proved in 1964 [2], that the only Fibonacci numbers that are perfect squares are $F_1 = 1$, $F_2 = 1$, and $F_{12} = 144$. M. Wunderlich[1] described an ingenious ``exclusion'' method to calculate which Fibonacci numbers, out of the first million, can possibly be perfect squares. The method does not prove that any Fibonacci numbers are perfect squares, rather it rules out those that are not.
 
-Consider a prime $p$. We first calculate the period of the Fibonacci numbers $\pmod p$, denoted here as the \textit{Fibonacci period} of $p$. For example, the Fibonacci period of $p = 7$ is 16, as the Fibonacci sequence $\pmod 7$ repeats after 16 steps. Specifically, the first 16 Fibonacci numbers $\pmod{7}$ are: \[ 1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, 0, \] after which it repeats $1, 1, 2, 3, 5, \dots$ again. Because the numbers $\pmod{7}$ that are quadratic non-residues are 3, 5, and 6, replacing each quadratic residue by a 1 and each quadratic non-residue by a 0 gives the binary string \[111001010001101.\]
-
-Take those residues of Fibonacci numbers $\pmod{p}$ that are quadratic non-residues $\pmod{p}$. If any Fibonacci number is congruent to a quadratic non-residue $\pmod{7}$, then it can never be a perfect square of any integer. Repeat, until the number of possible square Fibonacci numbers is down to a reasonable number to analyze.
-
-The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. Second, because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers.
-
-Suppose the primes considered are $p_1, p_2, \dots , p_n$, and let the Fibonacci periods of each prime be $d_1, d_2, \dots , d_n$. If a certain positive integer $k$ is such that $F_k$ is a quadratic residue modulo each of the $p_i$, then we know that it is a quadratic residue modulo $lcm(p_1, \dots , p_n)$. Similarly, if $F_k$ is a quadratic non-residue modulo \textit{one} of the $p_i$, it is a quadratic non-residue modulo $lcm(p_1, \dots , p_n)$. Thus, we can say that everything that does not work modulo one of the $p_i$ 
+In Section 3, we describe some limitations of this approach, and describe an optimization.
 
 \subsection{Lucas Numbers and Associated Identities}
-Insofar as the Fibonacci and Lucas sequences, and their sums, may be developed in different ways with various identities and recurrences, 
-$F_{n+k} + F_{n-k} = F_{n}L_{k}, even k$\\
-$F_{n+k} + F_{n-k} = L_{n}F_{k}, odd k$\\$F_{n+k} - F_{n-k} = F_{n}L_{k}, odd k$ \\ $F_{n+k} - F_{n-k} = L_{n}F_{k}, even k$ \\ $L_{n+k} + L_{n-k} = L_{n}L_{k}, even k$ \\ $L_{n+k} - L_{n-k} = F5_{n}F_{k}, even k$ \\ $L_{n+k} + L_{n-k} = F_{n}L_{k}, even k$\\ It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
+<<<<<<< Updated upstream
+Insofar as the Fibonacci and Lucas sequences, and their sums, may be developed in different ways with various identities and recurrences, a large number of identities connecting these two related sequences are known. These identities serve as the computational basis for many conjectures and family of sums involving the Lucas and Fibonacci sequences, as proposed in "Sums of Certain Products of Fibonacci and Lucas Numbers". 
+=======
+
+Insofar as the Fibonacci and Lucas sequences, and their sums, may be developed in different ways with various identities and recurrences, a large number of identities connecting these two related sequences are known. These identities serve as the computational basis for many conjectures and family of sums involving the Lucas and Fibonacci sequences, as proposed in "Sums of Certain Products of Fibonacci and Lucas Numbers". \\
+>>>>>>> Stashed changes
+$F_{n+k} + F_{n-k} = F_{n}L_{k}$, even $k$\\
+$F_{n+k} + F_{n-k} = L_{n}F_{k}$, odd $k$\\$F_{n+k} - F_{n-k} = F_{n}L_{k}$, odd $k$ \\ $F_{n+k} - F_{n-k} = L_{n}F_{k}$, even $k$ \\ $L_{n+k} + L_{n-k} = L_{n}L_{k}$, even $k$ \\ $L_{n+k} - L_{n-k}= F5_{n}F_{k}$, even $k$ \\ $L_{n+k} + L_{n-k} = F_{n}L_{k}$, even $k$\\ $L_{n}^{2} - L_{2n} = -2 = -L_{0}$, odd $n$\\ $5F_{2n}^{2} - L_{2n}^{2} = -4 = -L_{0}^{2}$\\ $5F_{2n}^{2} - L_{4n} = -2 = L_{0}$\\\\  It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
+\[
+\begin{bmatrix}
+L_{n+1} \\
+L_{n}
+\end{bmatrix} = Q_{L} \begin{bmatrix} F_{n} \\ F_{n-1}\end{bmatrix}
+\] 
+as well as \\
+\[
+5\begin{bmatrix}
+F_{n+1} \\
+L_{n}
+\end{bmatrix} = Q_{L} \begin{bmatrix} L_{n} \\ L_{n-1}\end{bmatrix}
+\] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$
+\\
+\\
+The identities relating the Fibonacci and Lucas numbers are significant in their use proving the following theorems for the construction of a family of sums of the Fibonacci numbers.\\ \\
+\textit{Theorem 1:}  
+\begin{theorem}
+$\Sigma_{k=1}^{n} F_{k}F_{k+1}...F_{k+4m+2}L{k+2m+1} = \frac{F_{n}F{n+1}...F{n+4m+3}}{F_{2m+2}}$
+\end{theorem} 
+
+\begin{theorem}
+$\Sigma_{k=1}^{n} L_{k}L_{k+1}...L_{k+4m+2}F_{k+2m+1}=[\frac{L_{k}L_{k+1}...L_{k+4m+3}}{5F_{2m+2}}]_{0}^n$
+\end{theorem}
+
+\textit{Theorem 2:}
+
+\begin{theorem}
+$\Sigma_{k=1}^n F_{k}^2F_{k+1}^2...F_{k+4m}^2F_{2k+4m}=\frac{F_{n}^2F_{n+1}^2...F_{n+4m+1}}{F_{4m+2}}$
+\end{theorem},\\
+
+\begin{theorem}
+$\Sigma_{k=1}^n L_{k}^2L_{k+1}^2...L_{k+4m}^2F_{2k+4m}=[\frac{L_{k}^2L_{k+1}^2...L_{k+4m+1}^2}{5F_{4m+2}}]_{0}^n$
+\end{theorem} It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
 \[
 \begin{bmatrix}
 L_{n+1} \\
@@ -118,34 +150,195 @@ L_{n}
 \] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$
 
 \section{Computational Approach}
+\subsection{Implementation Detail}
+<<<<<<< Updated upstream
+Various languages and operating systems were used to implement each part of this investigation. Particularly, the Fibonacci and Lucas generators were implemented in Python 2.7 and run on a Mac operating system, while the code to verify the Fibonacci and Lucas identities was written in Java. Due to the portability of the Java Virtual Machine, the operating systems on which all Java code was run were not kept consistent. Finally, C/C++ code was written and run on both a Mac operating system and Windows 8 in both the Dev-C++ IDE and on the Mac terminal. Also utilized was the Ada supercomputer based in Texas A'\&'M University. Ada has a Linux-based operating system, 845 compute nodes, and 20 cores per node; its peak performance is 337 teraflops, or $10^{12}$ floating-point operations per second. \\
+=======
+Various languages and operating systems were used to implement each part of this investigation. Particularly, the Fibonacci and Lucas generators were implemented in Python 2.7 and run on a Mac operating system, while the code to verify the Fibonacci and Lucas identities was written in Java. Due to the portability of the Java Virtual Machine, the operating systems on which all Java code was run were not kept consistent. Finally, C/C++ code was written and run on both a Mac operating system and Windows 8 in both the Dev-C++ IDE and on the Mac terminal. Also utilized was the Ada supercomputer based in Texas A\&M University. Ada has a Linux-based operating system, 845 compute nodes, and 20 cores per node; its peak performance is 337 teraflops, or $10^{12}$ floating-point operations per second. \\
+>>>>>>> Stashed changes
+Libraries used for computations included GNU Multi-Precision Arithmetic Library (GMP) for working with some large numbers in the C++ code on the Fibonacci squares; Sage, an open-source, Python-based mathematical language with support for various number-theoretic functions; and BigInteger, a Java API allowing for arbitrary-precision arithmetic. Parallel code in C++ utilized the POSIX threads, while parallel code in Java utilized the Runnable interface.
 \subsection{Fibonacci Squares}
-[1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used was predominantly C++.
+[1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used in this research was predominantly C++.
 
-Functions to check which numbers are quadratic residues mod a certain prime, to calculate GCDs and LCMs, and to calculate the power of a number modulo another were implemented. The basic algorithm from [1] was also implemented as a preliminary version. This algorithm was also implemented in parallel.
+% this was in theoretical but moved to computational due to more computational content
+% CHECK THESE SENTENCES FOR UNDERSTANDING. Needs to be written to a point where it is understandable.
+
+Consider a prime $p$. We first calculate the period of the Fibonacci numbers $\pmod p$, denoted here as the \textit{Fibonacci period} of $p$. For example, the Fibonacci period of $p = 7$ is 16, as the Fibonacci sequence $\pmod 7$ repeats after 16 steps. Specifically, the first 16 Fibonacci numbers $\pmod{7}$ are: \[ 1, 1, 2, 3, 5, 1, 6, 0, 6, 6, 5, 4, 2, 6, 1, 0, \] after which it repeats $1, 1, 2, 3, 5, \dots$ again. Because the numbers $\pmod{7}$ that are quadratic non-residues are 3, 5, and 6, replacing each quadratic residue by a 1 and each quadratic non-residue by a 0 gives the binary string \[111001010001101.\] Let this string for each prime $p$ be $S_p$. 
+
+Suppose we take a list of primes: $p_1, p_2, \dots , p_n$, and let the Fibonacci periods of each prime be $d_1, d_2, \dots , d_n$. Take those indices of $S_{p_i}$ that are 0. If any Fibonacci number is congruent to one of these indices mod $d_i$, then it can never be a perfect square of any integer. Such Fibonacci numbers can now be eliminated due to this prime. Repeat for more primes, until the number of possible square Fibonacci numbers is down to a reasonable number to analyze. We expect that approximately half of the Fibonacci numbers will be eliminated at each step, as about half of the integers mod a prime $p$ are quadratic residues. If $L = \text{lcm}(d_1,d_2,\dots,d_n)$, the worst case running time of this algorithm is $O(L\log n)$, where $n$ is the number of primes considered.
+
+The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. The computation here is superior for another reason: any $F_k$ with $k \not\equiv a \pmod L$ where $F_a$ is a perfect square is therefore also not a perfect square. This is because if $k \not\equiv a \pmod L$, then there exists some $d_i$ for which $k \not\equiv a \pmod d_i$, which also means that $F_k$ is not a quadratic residue modulo $p_i$, which means $F_k$ cannot be a perfect square. Because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers, but the computation here can. This is how the approach was optimized.
 
 \subsection{Lucas Numbers and Various Identities}
-Large lists of Fibonacci and Lucas numbers were generated using a Python script that utilized (matrix identity for fibonacci) in order to generate Fibonacci numbers, and generated Lucas numbers using the Fibonacci sequence. 
+Insofar as the Lucas sequence and the Fibonacci sequence are closely related, it is possible to derive the Lucas numbers from the Fibonacci sequence; furthermore, a similar generator matrix exists for the Lucas numbers as for the Fibonacci numbers. Various methods were used to implement the Lucas number generators, in particular utilizing the identity $L_{n} = F_{n-1} + F_{n+1}$ as well as the matrix identity detailled in the previous section. The generation of Fibonacci numbers relied on the exponentiation of the matrix \[
+\begin{bmatrix}
+1 1\\
+1 0
+\end{bmatrix} =  \begin{bmatrix} 
+	F_{2} F_{1} \\
+	F_{1} F_{0}
+	
+\end{bmatrix}
+\] . This also relied on a naive matrix multiplication that ran with $O(n^{3})$ complexity, making the generation of the $n^{th}$ Fibonacci number, as well as the Lucas numbers derived from it, relatively  computationally expensive. This algorithm was used to generate the first million Lucas numbers.\\
+Another means of generating Lucas numbers is through the matrix method referenced in "On Lucas Numbers by the Matrix Method": in a manner similar to the exponentiation of the aforementioned matrix used to generate Fibonacci numbers, the equations:
+\[
+\begin{bmatrix}
+L_{n+1} \\
+L_{n}
+\end{bmatrix} = Q_{L} \begin{bmatrix} F_{n} \\ F_{n-1}\end{bmatrix}
+\] 
+as well as \\
+\[
+5\begin{bmatrix}
+F_{n+1} \\
+L_{n}
+\end{bmatrix} = Q_{L} \begin{bmatrix} L_{n} \\ L_{n-1}\end{bmatrix}
+\] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$. This was implemented with Sage using its pre-optimized matrix constructors and matrix multiplication. The Sage library contains an implementation of Strassen matrix multiplication, which runs in $O(n^{2.81})$: over very large numbers, this is a marked improvement over the $O(n^{3})$ complexity of the naive matrix multiplication. This was also used to generate the first million Lucas numbers.
 
 
-\section{Results}
+The Fibonacci numbers, as well as the Lucas numbers, generated above, were used to investigate a series of identities involving sums and products of Fibonacci and Lucas numbers. Due to the nature of the BigInteger API, the sole limitation on the maximum precision allowed for this investigation was the availability of memory on the systems on which this code was tested. Each identity was implemented as a part of a larger class called FiboAndLucas, whose design was not fully object-oriented in nature and as such did not utilize many of the object-oriented features offered in Java. In the parallel implementation, each identity was tested from $n, k = 0$ to $n, k = 500$; each identity was tested at all possible values in its own thread. In the serial implementation, each identity was tested from $n,k = 0$ to $n,k = 250$ due to limitations on the system.
+\section{Results and Conclusion}
+\subsection{Fibonacci Squares}
+Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
+
+In each run, we got that the only possible Fibonacci numbers that can be perfect squares were the ones with indices $1, 2, 12 \pmod{L}$, confirming the computation done in [1] and the proof done in [2]. Execution times on Ada are summarized as follows:
+
+\begin{tabular}{ccc}
+\hline
+$L$ & Number of primes & Execution time (s) \\ \hline
+604800 & 103 & 0.88 \\
+907200 & 112 & 1.34 \\
+6350400 & 138 & 9.24 \\
+9072000 & 135 & 12.37 \\
+63504000 & 163 & 105.61 \\ \hline \hline
+\end{tabular}
+
+<<<<<<< Updated upstream
+\subsection{Lucas Numbers and Various Identities}
+This code was run serially on a Mac operating system; it was not run on Ada. Due to ranging errors, results could be verified only up to $n,k=250$. Results are below:
+\begin{tabular}{ccc}
+\hline
+ Range of n,k & Mac OS (s)  \\ \hline
+50 & 0.274 & 0.004\\
+100 & 0.758 & 0.004 \\
+150 & 1.43 & 0.004 \\
+200 & 2.30 & 0.004 \\
+250 & 3.64 & 0.004 \\ 
+\hline \hline
+\end{tabular}
+As the means of testing each identity was initially $O(n^{2})$, each identity was run in a separate thread of execution. Execution time was recorded on a Mac terminal using the Java Virtual Machine, as well as on Ada. The multi-threaded execution times may be summarized as below:\\
+\begin{tabular}{ccc}
+\hline
+ Range of n,k & Mac OS (s) & Ada (s) \\ \hline
+50 & 0.039 & 0.004\\
+100 & 0.059 & 0.004 \\
+150 & 0.187 & 0.004 \\
+200 & 0.051 & 0.004 \\
+250 & 0.094 & 0.004 \\ 
+300 & 0.077 & 0.004 \\
+350 & 0.104 & 0.005 \\
+400 & 0.189 & 0.004 \\
+450 & 0.3304 & 0.003 \\
+500 & 0.094 &0.004 \\ \hline \hline
+\end{tabular}
+
+The speedup and efficiency up to $n,k=250$ were calculated, as serial code was available only up to this range and on the Mac OS.
+
+\begin{tabular}
+\hline
+ Range of n,k & Speedup  & Efficiency \\ \hline
+50 & 0.195 & 0.001\\
+100 & 0.084 & 0.007 \\
+150 & 0.130 & 0.011 \\
+200 & 0.119 & 0.010 \\
+250 & 0.025 & 0.002 \\ 
+ \hline \hline
+\end{tabular} \\
+Therefore, the maximum speedup obtained over the serial code reduced the execution time to 2.5 percent of its original execution time. No consistent behavior was observed with efficiency, however, except for that the ratio was consistently low. This is likely due to the fact that each computation was performed in an individual thread, thereby utilizing parallelism as a means to accomplish some tasks in parallel, but not taking advantage of the full capacities of either parallelism or the number of threads. It is relevant to note that as the number of threads used in this implementation remained constant, the speedup is simply a scalar multiple of the efficiency, with the other factor being the number of threads used.
 
 
+=======
+\section{Results and Conclusion}
+\subsection{Fibonacci Squares}
+Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
+>>>>>>> Stashed changes
 
-\section{Conclusion}
+In each run, we got that the only possible Fibonacci numbers that can be perfect squares were the ones with indices $1, 2, 12 \pmod{L}$, confirming the computation done in [1] and the proof done in [2]. Execution times on Ada are summarized as follows:
 
-
-
+<<<<<<< Updated upstream
 \section{Individual Contributions}
 
 \begin{enumerate}
-\item Sarah: Wrote code to verify Fibonacci and Lucas sum identities; wrote small scripts to generate Lucas and Fibonacci numbers based on known identities; implemented the Fibonacci squares algorithm in parallel in C; re-implemented the Fibonacci and Lucas sum code in parallel. Developed some theoretical background on the Lucas sequence.
+\item Sarah: Wrote code to verify various identities on Lucas and Fibonacci sums; wrote small scripts to generate Lucas and Fibonacci numbers based on known identities; implemented the Fibonacci squares algorithm in parallel in C; re-implemented the Fibonacci and Lucas sum code in parallel. Developed some theoretical background on the Lucas sequence. Verified Fibonacci squares conjecture in the supercomputer. Write computational approaches aspect of paper.
+=======
+\begin{tabular}{ccc}
+\hline
+$L$ & Number of primes & Execution time (s) \\ \hline
+604800 & 103 & 0.88 \\
+907200 & 112 & 1.34 \\
+6350400 & 138 & 9.24 \\
+9072000 & 135 & 12.37 \\
+63504000 & 163 & 105.61 \\ \hline \hline
+\end{tabular}
+>>>>>>> Stashed changes
 
-\item Daniel: I wrote a significant portion of the code for 
 
-\item Taylor:
-\end{enumerate}
+\subsection{Lucas Numbers and Various Identities}
+This code was run serially on a Mac operating system; it was not run on Ada. Due to ranging errors, results could be verified only up to $n,k=250$. Results are below: \\ \\
+\begin{tabular}{ccc} \\
+\hline
+ Range of n,k & Mac OS (s)  \\ \hline
+50 & 0.274 & 0.004\\
+100 & 0.758 & 0.004 \\
+150 & 1.43 & 0.004 \\
+200 & 2.30 & 0.004 \\
+250 & 3.64 & 0.004 \\ 
+\hline \hline 
+\end{tabular} \\
+As the means of testing each identity was initially $O(n^{2})$, each identity was run in a separate thread of execution. Execution time was recorded on a Mac terminal using the Java Virtual Machine, as well as on Ada. The multi-threaded execution times may be summarized as below:\\ \\
+\begin{tabular}{ccc}
+\hline
+ Range of n,k & Mac OS (s) & Ada (s) \\ \hline
+50 & 0.039 & 0.004\\
+100 & 0.059 & 0.004 \\
+150 & 0.187 & 0.004 \\
+200 & 0.051 & 0.004 \\
+250 & 0.094 & 0.004 \\ 
+300 & 0.077 & 0.004 \\
+350 & 0.104 & 0.005 \\
+400 & 0.189 & 0.004 \\
+450 & 0.3304 & 0.003 \\
+500 & 0.094 &0.004 \\ \hline \hline
+\end{tabular} \\ \\
+
+The speedup and efficiency up to $n,k=250$ were calculated, as serial code was available only up to this range and on the Mac OS.
+\\ \\
+\begin{tabular}{ccc}
+\hline
+ Range of n,k & Speedup  & Efficiency \\ \hline
+50 & 0.195 & 0.001\\
+100 & 0.084 & 0.007 \\
+150 & 0.130 & 0.011 \\
+200 & 0.119 & 0.010 \\
+250 & 0.025 & 0.002 \\ 
+ \hline \hline
+\end{tabular} \\ \\
+Therefore, the maximum speedup obtained over the serial code reduced the execution time to 2.5 percent of its original execution time. No consistent behavior was observed with efficiency, however, except for that the ratio was consistently low. This is likely due to the fact that each computation was performed in an individual thread, thereby utilizing parallelism as a means to accomplish some tasks in parallel, but not taking advantage of the full capacities of either parallelism or the number of threads. It is relevant to note that as the number of threads used in this implementation remained constant, the speedup is simply a scalar multiple of the efficiency, with the other factor being the number of threads used.
 
 \section{References}
+
+\begin{enumerate}
+\item M. Wunderlich, On the non-existence of Fibonacci Squares, Maths, of Computation, 17 (1963) p. 455. 
+
+\item J. H. E. Cohn, ``Square Fibonacci Numbers, Etc.'' Fibonacci Quarterly \textbf{2} 1964, pp. 109-113.
+
+\item Koken, Fikri, and Durmus Bozkurt. "ON LUCAS NUMBERS BY THE MATRIX METHOD." \textit{Hacettepe Journal of Mathematics and Statistics} 39.4 (2010): 471-75. \textit{Hacettepe University Journal of Mathematics and Statistics}. Web. 23 Oct. 2015.
+
+\item Melham, R. S. "SUMS OF CERTAIN PRODUCTS OF FIBONACCI AND LUCAS NUMBERS." \textit{Fibonacci Quarterly} (1999): n. pag. \textit{The Fibonacci Quarterly}. Web. 23 Oct. 2015.
+
+\item Luma, A., and B. Raufi. "Relationship between Fibonacci and Lucas Sequences and Their Application in Symmetric Cryptosystems." \textit{Latest Trends on Circuits, Systems, and Signals} (n.d.): n. pag. \textit{WSEAS Conference}. Web. 23 Oct. 2015.
+\end{enumerate}
+
 
 
 \end{document}
