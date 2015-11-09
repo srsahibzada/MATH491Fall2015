@@ -375,4 +375,46 @@ l.208 \hline
             
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
-ma
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+! Use of \@array doesn't match its definition.
+<argument> \edef \reserved@a {
+                              \reserved@a x}\advance \@tempcnta \m@ne 
+l.208 \hline
+            
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+! Use of \@array doesn't match its definition.
+<argument> \edef \reserved@a {\reserved@a x
+                                           }\advance \@tempcnta \m@ne 
+l.208 \hline
+            
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+Runaway definition?
+->\noalign {\hrule height\arrayrulewidth \futurelet }\@tempcnta 0\relax \ETC.
+! TeX capacity exceeded, sorry [main memory size=3000000].
+<argument> ...lax \edef \reserved@a {\reserved@a x
+                                                  }\advance \@tempcnta \m@ne...
+l.208 \hline
+            
+If you really absolutely need more capacity,
+you can ask a wizard to enlarge me.
+
+ 
+Here is how much of TeX's memory you used:
+ 2113 strings out of 493921
+ 27314 string characters out of 3144877
+ 3000001 words of memory out of 3000000
+ 5407 multiletter control sequences out of 15000+200000
+ 17967 words of font info for 62 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,8n,20p,1035b,249s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
