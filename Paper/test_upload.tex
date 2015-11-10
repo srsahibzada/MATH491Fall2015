@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[top=1.25in, bottom=1.25in, left=1in, right=1in]{geometry}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Summary of Wiener's Attack and the $n^{\frac{1}{4}}$ Bound}
+\author{Sarah Sahibzada, Daniel Whatley, Taylor Wilson}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+It is a well accepted fact that the proven upper bound for Wiener’s attack is $d < \frac{1}{3}n^{\frac{1}{4}}$.  The general statement for Wiener’s attack is: If $p < q < 2p$, $e < n$ and $d < \frac{1}{3}n^{\frac{1}{4}}$, then d is the denominator of some convergent of the continued fraction expansion of e.  In essence, it is assumed that the e is approximately the same bit-length as the modulus. Some papers have shown slight improvements, such as increasing it to $n^{.292}$ when using a lattice based system. (Cryptanalysis of RSA with Private Key $d$ Less than $n^{0.292}$); however, based on one converse to Wiener's result, it may be shown that for some $\delta > \frac{1}{4} + \epsilon$, this attack succeeds with negligible probability $2^{-c\ell}$ for some $c > 0$. \par
+In order to continue this discussion on continued fractions, it is first necessary to establish some background terminology, particularly with respect to continued fractions and convergents. A \underline{continued fraction} may be defined as an expression of the form 
+\begin{equation}
+a_{0} + \cfrac{n_{1}}{a_{1} + \cfrac{n_{2}}{a_{2} + \cfrac{n_{3}}{a_{3}...}}}
+\end{equation}
+
+We define the \underline{continued fraction expansion} as $\{a_{1}, a_{2} . . . a_{n}\}$ For a continued fraction $\{a_{1}, a_{2} . . . a_{n}\}$, we define the $k^{th}$ convergent as the continued fraction $\{a_{1}, a_{2} . . . a_{k}\}, k < n$. For purposes of this discussion, it is necessary to highlight a property of convergents. Consider a set of convergents $y_{1} \dots y{n}$ of some rational number $ x = \frac{p}{q}$, where p and q are positive and x is a proper fraction defined in lowest terms. We may write each $y_{i}$ as a ratio of some $p_{i}$ and $q_{i}$, where $p_{i}$ and $q_{i}$ are relatively prime; then we may state that for $i \in \{ 1 \dots n - 1\}, |\frac{p_{i}}{q_{i}} - x| < \frac{1}{q_{i}}$.  \par 
+
+
+\section{Origins of the Bound}
+
+Wiener's original paper establishes a method to recover $d$ in efficient time. Because $ed \equiv 1 \pmod{\varphi(n)}$, we define a positive integer $k$ such that $ed - k\varphi(n) = 1$. An attacker does not know the value of $\varphi(n)$, but it is not difficult to show that $n - \varphi(n) < 3\sqrt{n}$ given $p < q < 2p$, and hence $n$ can be substituted for $\varphi(n)$ for the purposes of continued fractions. Therefore, $e/n$ is a close estimate of $k/d$. Because $e/n$ consists only of public information, continued fractions can then be exploited to determine close convergents to $k/d$.
+
+We now show that for $d < \frac13 n^{1/4}$, $|e/n - k/d|$ is small. We assume that $e < \varphi(n)$ (Wiener's paper states that large $e$ defeats his attack). This means that $k/d \approx e/\varphi(n)$, i.e. $k < d$. Also, since $3d < n^{1/4}$, certainly $2d < n^{1/4}$.
+
+Because $n - \varphi(n) < 3\sqrt{n}$, we know that: \begin{eqnarray*} |e/n - k/d| &\leq& \frac{3k}{d\sqrt n} \\ &\leq& \frac{3 \cdot \frac13 n^{1/4}}{d\sqrt n} \\ &=& \frac1{d n^{1/4}} \\ &\leq& \frac 1{2d^2}. \end{eqnarray*} As mentioned in Section 3 of Wiener's original paper, this means that $d$ can be recovered in polynomial time as then $\delta$ will be small enough for the continued fraction algorithm to succeed.
+
+
+This result is confirmed by Steinfeld et al. in "Converse Results to the Wiener Attack on RSA." This paper investigates the initial claim by Wiener that this RSA attack may at times work for values of $d$ greater than $n^{\frac{1}{4}}$, and places a bound on the probability of success of this attack for any $d = n^{\frac{1}{4} + \epsilon} \epsilon > 0$, concluding that $n^{\frac{1}{4}}$ is a tight bound and the probability of success of Wiener's attack for $d = n^{\frac{1}{4} + \epsilon} \epsilon > 0$ is negligible and may be quantified as $2^{-c \times l}$, $c  > 0$, and $l$ serving as an exponent to which 2 is raised in order to quantify the order of the modulus $n$. Consider a set of key-generating parameters in RSA $(\delta, \beta_{1}, \beta_{2}, l)$, defined such that an RSA modulus N of order $2^{l}$ and a secret exponent d of order $N^{\delta}$ can be computed, where $\beta_{1}$ and $\beta_{2}$ restrict the size of the interval from which the prime factors of both the modulus and secret exponent may be chosen. It is known that if Wiener's attack succeeds on a particular modulus-public exponent pair $(n, e)$, then one of the convergents of $\frac{e}{n}$ must be equal to $\frac{k}{d}$, where $k$ is defined as above. However, based on the property of convergents outlined in the previous section, it must be true that $|\frac{k}{d} - \frac{e}{n}| < \frac{1}{d^{2}}$, since we are examining the convergents of $\frac{e}{n}$. Therefore, for $d > 2^{\delta \times l - \beta_{2}}$ where $\delta = \frac{1}{4} + \epsilon$, the following is derived: \begin{equation}
+\frac{k}{d} - \frac{e}{N} < 2^{c \times l} \quad \text{where} \quad c = 2\beta_{2}-\frac{1}{2} + 2\epsilon \times l
+\end{equation}\par
+The probability of the above occurring is negligible; however, the proof of this is beyond the scope of this summary.
+\section{Resources}
+Steinfeld, R., Contini, S., Wang, H., \& Pieprzyk, J. (n.d.). Converse Results to the Wiener Attack on RSA. \textit{Public Key Cryptography - PKC 2005 Lecture Notes in Computer Science}, 184-198.
+\vspace{.1in}
+
+\noindent Kraft, J., \& Washington, L. (n.d.). \textit{An introduction to number theory with cryptography}, 384-386
+\end{document}
