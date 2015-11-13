@@ -1,0 +1,9 @@
+F_2 may be a perfect square
+F_12 may be a perfect square
+F_31752000 may be a perfect square
+F_63503999 may be a perfect square
+F_63504000 may be a perfect square
+F_63504001 may be a perfect square
+F_63504002 may be a perfect square
+Nothing else works.
+Execution time: 105.61
