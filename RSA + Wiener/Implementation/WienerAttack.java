@@ -5,17 +5,13 @@
 	MATH 491 Computational Number Theory Group:
 	Sarah Sahibzada, Daniel Whatley & Taylor Wilson
 
-	TODO:
-		Newton-Raphson square root vs other options--our maximum 
-		values are limited to 2^64
-		I need to comment this..... sorry!!!!
-
-
 */
 
 import java.math.BigInteger;
 import java.math.BigDecimal;
 import java.util.*;
+
+
 
 public class WienerAttack {
 	BigInteger publicModulus;
@@ -69,11 +65,34 @@ public class WienerAttack {
 
 
 	}
+
+public static BigDecimal squareRoot(BigDecimal arg, BigDecimal min, BigDecimal max) {
+	
+	BigDecimal midpoint = min.add(max).divide(new BigDecimal("2.0"));	
+	BigDecimal testSquare = midpoint.multiply(midpoint);
+	testSquare = testSquare.setScale(5,BigDecimal.ROUND_HALF_UP);
+	int found = testSquare.compareTo(arg);
+	if (found > 0) {
+		max = midpoint;
+		return squareRoot(arg,min,max);
+	}
+	else if (found < 0) {
+		System.out.println(midpoint.toString());
+		min = midpoint;
+		return squareRoot(arg,min,max);
+	}
+	else {
+		System.out.println(midpoint.toString());
+		return midpoint;
+	}
+
+
+}
 //http://stackoverflow.com/questions/13649703/square-root-of-bigdecimal-in-java
 //todo: try to write our own for more precision
 public static BigDecimal sqrt(BigDecimal A) {
     BigDecimal x0 = new BigDecimal("0");
-    BigDecimal x1 = new BigDecimal(Math.sqrt(A.floatValue()));
+   BigDecimal x1 = new BigDecimal(Math.sqrt(A.floatValue()));
     while (!x0.equals(x1)) {
         x0 = x1;
         x1 = A.divide(x0,  BigDecimal.ROUND_HALF_UP);
@@ -102,12 +121,12 @@ public static BigDecimal sqrt(BigDecimal A) {
 		BigDecimal root1;
 		BigDecimal root2;
 		System.out.println(a.toString() + "x^2 + " + b.toString() + "x + " + c.toString());
-		root1 = (b).add(sqrt(bSquared.subtract(fourAC)));
+		root1 = (b).add(squareRoot(bSquared.subtract(fourAC), new BigDecimal("0"), bSquared.subtract(fourAC)));
 		root1 = root1.divide(twoA);
-		computedRoots.add(root1);
-		root2 = (b).subtract(sqrt(bSquared.subtract(fourAC)));
+		computedRoots.add(root1.setScale(5,BigDecimal.ROUND_HALF_UP));
+		root2 = (b).subtract(squareRoot(bSquared.subtract(fourAC), new BigDecimal("0"), bSquared.subtract(fourAC)));
 		root2 = root2.divide(twoA);
-		computedRoots.add(root2);
+		computedRoots.add(root2.setScale(5,BigDecimal.ROUND_HALF_UP));
 		for (BigDecimal r : computedRoots) {
 			System.out.println(r.toString());
 		}
@@ -185,14 +204,7 @@ public static BigDecimal sqrt(BigDecimal A) {
 					}
 					//quadratic formula test
 				}
-
-				//System.out.println(t);
-				//System.out.println(possiblePhi.toString());
-				//System.out.println("----------------");
-
 			}
-
-
 
 			}
 		
@@ -212,13 +224,12 @@ public static BigDecimal sqrt(BigDecimal A) {
 		wa.weinerAttack();
 		//wa.phiN = new BigInteger("64000");
 		//wa.findRoots();
+		BigDecimal sixtyfour = new BigDecimal("43534.0");
+		BigDecimal zero = new BigDecimal("0");
+		int maxIters = (sixtyfour.toBigInteger()).bitCount();
+		squareRoot(sixtyfour,zero,sixtyfour);
+
 	}
-
-	/*
-
-
-
-	}*/
 
 
 
