@@ -120,10 +120,12 @@ public class ContinuedFraction {
 		 		nextDenom = storeNumerator.mod(storeDenominator);
 		 		storeNumerator = storeDenominator; //47 <- 17
 		 		storeDenominator = nextDenom;
-				//System.out.println(cF);
+				System.out.println(cF);
 				this.cFracExpansion.add(cF);
 		 }
 		 this.maxExpansionSize = cFracExpansion.size();
+
+
 	}	
 
 
@@ -154,7 +156,7 @@ public class ContinuedFraction {
 			//special cases for "chart"
 			if (firstRow == true) {
 				//current conv is already 1
-				//System.out.println("Set everything to one");
+				System.out.println("Set everything to one");
 				pK = b;
 				qK = BigInteger.ONE;
 				pKPrev = b;
@@ -192,8 +194,9 @@ public class ContinuedFraction {
 
 		}
 		Fraction f = new Fraction(pK,qK);
-		//System.out.println(f.getNum() + "/" + f.getDen());
+		System.out.println(f.getNum() + "/" + f.getDen());
 		return f;
+
 	}
 		
 
@@ -217,9 +220,13 @@ public class ContinuedFraction {
 	}
 
 	public static void main(String[] args) {
-		Fraction test = new Fraction(new BigInteger("42667"), new BigInteger("64741"));
+		System.out.println("hello!");
+		//87685 /29
+		//993151 / 5
+		Fraction test = new Fraction(new BigInteger("993151"), new BigInteger("5"));
 		ContinuedFraction cf = new ContinuedFraction(test);
 		cf.generate();
+	
 		//System.out.println(cf);
 		cf.evaluate(cf.getMaxConvergentSize());
 
