@@ -7,7 +7,7 @@
 	Sarah Sahibzada, Daniel Whatley & Taylor Wilson
 	TODO:
 		CFrac should extend fraction (bad practice of writing code sans planning)
-		COMMENTS COMMENTS COMMENTS
+		
 		
 
 */
@@ -48,6 +48,30 @@ class Fraction {
 		}*/
 		return toReturn.toString();
 
+	}
+	@Override 
+	public boolean equals(Object o) {
+		if (!(o instanceof Fraction)) {
+			return false;
+		}
+		else {
+			Fraction ff = (Fraction)o;
+			if (!ff.numerator.equals(this.numerator)) {
+				return false;
+			}
+			if (!ff.denominator.equals(this.denominator) ){
+				return false;
+			}
+			return true;
+		}
+	}
+	@Override
+	public int hashCode() {
+		String bits = (this.numerator.multiply(this.denominator)).toString(2);
+
+		int hash = Integer.parseInt(bits);
+		//System.out.println(""+hash);
+		return hash;
 	}
 
 }
@@ -120,10 +144,13 @@ public class ContinuedFraction {
 		 		nextDenom = storeNumerator.mod(storeDenominator);
 		 		storeNumerator = storeDenominator; //47 <- 17
 		 		storeDenominator = nextDenom;
-				System.out.println(cF);
+				//System.out.println(cF+ "!");
 				this.cFracExpansion.add(cF);
 		 }
 		 this.maxExpansionSize = cFracExpansion.size();
+		 for (BigInteger b : cFracExpansion) {
+			System.out.println(b.toString());
+		}
 
 
 	}	
@@ -156,7 +183,7 @@ public class ContinuedFraction {
 			//special cases for "chart"
 			if (firstRow == true) {
 				//current conv is already 1
-				System.out.println("Set everything to one");
+				//System.out.println("Set everything to one");
 				pK = b;
 				qK = BigInteger.ONE;
 				pKPrev = b;
@@ -194,18 +221,13 @@ public class ContinuedFraction {
 
 		}
 		Fraction f = new Fraction(pK,qK);
-		System.out.println(f.getNum() + "/" + f.getDen());
+		//System.out.println(f.getNum() + "/" + f.getDen());
 		return f;
 
 	}
 		
 
-	/*BigDecimal getMyDecimalRep() {
 
-	}
-	BigDecimal decRepNthConv(int until) {
-
-	}*/
 
 	@Override
 	//this is ugly sorry
@@ -219,16 +241,48 @@ public class ContinuedFraction {
 
 	}
 
+	@Override 
+	public boolean equals(Object o) {
+		if (!(o instanceof ContinuedFraction)) {
+			return false;
+		}
+		else {
+			ContinuedFraction ff = (ContinuedFraction)o;
+			if (!ff.getNumerator().equals( f.getNum())) {
+				return false;
+			}
+			if (!ff.getDenominator().equals(f.getDen())) {
+				return false;
+			}
+			return true;
+		}
+	}
+	@Override
+	public int hashCode() {
+		String bits = (f.getNum().multiply(f.getDen())).toString(2);
+		int sum = 0;
+		for (char c : bits.toCharArray()) {
+			sum += (int)c;
+		}
+		System.out.println(sum);
+		return sum;
+		//int hash = Integer.parseInt(bits);
+		//System.out.println(""+hash);
+		//return hash;
+	}
 	public static void main(String[] args) {
-		System.out.println("hello!");
-		//87685 /29
-		//993151 / 5
-		Fraction test = new Fraction(new BigInteger("993151"), new BigInteger("5"));
+		System.out.println("hello!!");
+		Fraction test = new Fraction(new BigInteger("42667"), new BigInteger("64741"));
+		Fraction test2 = new Fraction(new BigInteger("42667"), new BigInteger("64741"));
 		ContinuedFraction cf = new ContinuedFraction(test);
 		cf.generate();
-	
+		for (BigInteger b : cf.cFracExpansion) {
+			System.out.println(b.toString());
+		}
 		//System.out.println(cf);
 		cf.evaluate(cf.getMaxConvergentSize());
+		System.out.println(test.equals(test2) + "!");
+		cf.hashCode();
 
 	}
 }
