@@ -9,9 +9,12 @@
 import java.math.BigInteger;
 import java.math.BigDecimal;
 import java.util.*;
-import java.io.File;
 
 
+/*
+	"INHERIT ONLY IF YOU WANT TO OVERRIDE SOME BEHAVIOR"
+	"INHERIT LESS, INTERFACE MORE"
+*/
 
 public class WienerAttack {
 	private BigInteger publicModulus;
@@ -247,74 +250,8 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 	
 
 
-
 	
 
-	public static void main(String[] args) {
-//try {
-	
-		//while(true) {
-		BigInteger p = primes.generatePrimeOfSize(7);
-		BigInteger q = primes.generatePrimeOfSize(7);
-		BigInteger publicMod = p.multiply(q);
-		BigInteger actualPhi = primes.phiOfPrimes(p,q);
-
-		System.out.println("My public modulus is " + publicMod.toString() + " and has " + publicMod.toString(2).length() + " bits");
-	    System.out.println("My actual phi of N is " + actualPhi.toString() );
-		BigDecimal capOnDVal = fourthRoot(new BigDecimal(publicMod), new BigDecimal("0"), new BigDecimal(publicMod)).divide(Globals.DECIMAL_THREE, 10, BigDecimal.ROUND_HALF_UP);
-		System.out.println("1/3 N^(1/4) = " + capOnDVal.toString());
-		
-		//BigInteger integralCap = capOnDVal.toBigInteger();
-		BigInteger integralCap = actualPhi;
-		int numBits = (publicMod.toString(2)).length()/4;
-		//generate appropriate d value
-		BigInteger testD = new BigInteger("0");
-		boolean found = false;
-		ArrayList<BigInteger> toTest = new ArrayList<BigInteger>();
-			int upper = integralCap.intValue();
-
-			/*if (upper <= 2) {
-				continue;
-			}*/
-			for (int i = 2; i < upper; i++) {
-				BigInteger testVal = new BigInteger(i+"");
-				if (testVal.gcd(actualPhi).equals(Globals.INTEGER_ONE)) {
-					//System.out.println(testVal.toString() + "   " + actualPhi.toString());
-					//System.out.println(testVal.modInverse(actualPhi).toString());
-					if (testVal.modInverse(actualPhi).compareTo(actualPhi) < 0) {
-						found = true;
-						testD = testVal;
-						toTest.add(testD);
-					//	break;
-					}
-				}
-
-			}
-			/*if (found == false) {
-				continue; //couldn't find appropriate key in range, starting over
-			}*/
-			
-		for(BigInteger t : toTest) {
-		BigInteger publicExponent = t.modInverse(actualPhi);
-
-
-		WienerAttack wa2 = new WienerAttack(publicMod, publicExponent);
-
-		
-		BigInteger dVal = wa2.weinerAttack();
-		if (!dVal.equals(Globals.INTEGER_NEGATIVE_ONE)) {
-			System.out.println("Attack succeeded for d = " + dVal.toString());
-			System.out.println("Successful e = " + publicExponent.toString());
-
-		}
-		else {
-			System.out.println("Attack failed for d = " + t.toString());
-			System.out.println("Failed e = " + publicExponent.toString());
-		}
-	}
-	//}
-//}
-}
 
 }
 
