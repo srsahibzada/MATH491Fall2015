@@ -7,7 +7,7 @@
 	Sarah Sahibzada, Daniel Whatley & Taylor Wilson
 	TODO:
 		CFrac should extend fraction (bad practice of writing code sans planning)
-		COMMENTS COMMENTS COMMENTS
+		
 		
 
 */
@@ -48,6 +48,30 @@ class Fraction {
 		}*/
 		return toReturn.toString();
 
+	}
+	@Override 
+	public boolean equals(Object o) {
+		if (!(o instanceof Fraction)) {
+			return false;
+		}
+		else {
+			Fraction ff = (Fraction)o;
+			if (!ff.numerator.equals(this.numerator)) {
+				return false;
+			}
+			if (!ff.denominator.equals(this.denominator) ){
+				return false;
+			}
+			return true;
+		}
+	}
+	@Override
+	public int hashCode() {
+		String bits = (this.numerator.multiply(this.denominator)).toString(2);
+
+		int hash = Integer.parseInt(bits);
+		//System.out.println(""+hash);
+		return hash;
 	}
 
 }
@@ -102,12 +126,7 @@ public class ContinuedFraction {
 
 
 	}
-	/*ContinuedFraction makeReciprocal() {
-		
-		BigInteger tempNumerator = this.denominator;
-		BigInteger tempDenominator = this.numerator;
-		return 
-	}*/
+
 	//Generate the continued fraction expansion for an arbitraty fraction
 	void generate() {
 		//while (cFracMod.compareTo(BigInteger.ZERO) != 0) {
@@ -115,23 +134,23 @@ public class ContinuedFraction {
 		 BigInteger storeDenominator = f.getDen();
 		 BigInteger cF;
 		 BigInteger nextDenom;
-		 while (storeNumerator.compareTo(BigInteger.ONE) != 0) {
+		 while (storeNumerator.compareTo(Globals.INTEGER_ONE) != 0 && storeDenominator.compareTo(Globals.INTEGER_ZERO) != 0) {
 		 		cF = storeNumerator.divide(storeDenominator);
 		 		nextDenom = storeNumerator.mod(storeDenominator);
 		 		storeNumerator = storeDenominator; //47 <- 17
 		 		storeDenominator = nextDenom;
-				//System.out.println(cF);
+
 				this.cFracExpansion.add(cF);
 		 }
 		 this.maxExpansionSize = cFracExpansion.size();
+		/* for (BigInteger b : cFracExpansion) {
+			System.out.println(b.toString());
+		}*/
+
+
+
 	}	
 
-
-
-	//If initialized with list 
-	/*
-		
-	*/
 	Fraction evaluate(int until) {
 		if (until > cFracExpansion.size() || until <= 0) {
 			return new Fraction(BigInteger.ZERO, BigInteger.ZERO); //error case
@@ -194,15 +213,11 @@ public class ContinuedFraction {
 		Fraction f = new Fraction(pK,qK);
 		//System.out.println(f.getNum() + "/" + f.getDen());
 		return f;
+
 	}
 		
 
-	/*BigDecimal getMyDecimalRep() {
 
-	}
-	BigDecimal decRepNthConv(int until) {
-
-	}*/
 
 	@Override
 	//this is ugly sorry
@@ -216,12 +231,51 @@ public class ContinuedFraction {
 
 	}
 
+	@Override 
+	public boolean equals(Object o) {
+		if (!(o instanceof ContinuedFraction)) {
+			return false;
+		}
+		else {
+			ContinuedFraction ff = (ContinuedFraction)o;
+			if (!ff.getNumerator().equals( f.getNum())) {
+				return false;
+			}
+			if (!ff.getDenominator().equals(f.getDen())) {
+				return false;
+			}
+			return true;
+		}
+	}
+	@Override
+	public int hashCode() {
+		String bits = (f.getNum().multiply(f.getDen())).toString(2);
+		int sum = 0;
+		for (char c : bits.toCharArray()) {
+			sum += (int)c;
+		}
+		//System.out.println(sum);
+		return sum;
+		//int hash = Integer.parseInt(bits);
+		//System.out.println(""+hash);
+		//return hash;
+	}
 	public static void main(String[] args) {
-		Fraction test = new Fraction(new BigInteger("42667"), new BigInteger("64741"));
+		System.out.println("hello!!");
+		Fraction test = new Fraction(new BigInteger("32857"), new BigInteger("47897"));
+		//Fraction test2 = new Fraction(new BigInteger("42667"), new BigInteger("64741"));
 		ContinuedFraction cf = new ContinuedFraction(test);
 		cf.generate();
-		//System.out.println(cf);
+		/*for (BigInteger b : cf.cFracExpansion) {
+			System.out.println(b.toString());
+		}*/
+	/*	for (int i = 0; i < cf.getMaxConvergentSize(); i++) {
+			System.out.println(cf.evaluate(i));
+		}
+		System.out.println(cf);*/
 		cf.evaluate(cf.getMaxConvergentSize());
+		//System.out.println(test.equals(test2) + "!");
+		//cf.hashCode();
 
 	}
 }
