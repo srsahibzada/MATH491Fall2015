@@ -9,6 +9,7 @@
 import java.math.BigInteger;
 import java.math.BigDecimal;
 import java.util.*;
+import java.io.File;
 
 
 
@@ -51,7 +52,7 @@ public class WienerAttack {
 		BigInteger numerator = publicExponent.multiply(f.getDen()).subtract(BigInteger.ONE);
 		BigInteger denominator = f.getNum();
 		//System.out.println(denominator.toString());
-		System.out.println(f.toString() + " as frac phi n");
+		//System.out.println(f.toString() + " as frac phi n");
 		//ConfinuedFraction cf  = new ContinuedFraction(new Fraction(numerator,denominator));
 		//System.out.println(cf); //to test
 		if (isWholeFrac(new Fraction(numerator,denominator))) {
@@ -59,7 +60,7 @@ public class WienerAttack {
 			return new Fraction(numerator, denominator);
 		}
 		else {
-			System.out.println("Remainder of " + numerator.mod(denominator));
+			//System.out.println("Remainder of " + numerator.mod(denominator));
 			return new Fraction(Globals.INTEGER_ZERO, Globals.INTEGER_ZERO);
 		}
 
@@ -128,20 +129,20 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 		BigDecimal root1;
 		BigDecimal root2;
 		if (bSquared.subtract(fourAC).compareTo(Globals.DECIMAL_ZERO) < 0) {
-			System.out.println(bSquared.subtract(fourAC));
+			//System.out.println(bSquared.subtract(fourAC));
 			return;
 		}
 	//	if (bSquared.subtract)
-		System.out.println(a.toString() + "x^2 + " + b.toString() + "x + " + c.toString());
+		//System.out.println(a.toString() + "x^2 + " + b.toString() + "x + " + c.toString());
 		root1 = (b).add(squareRoot(bSquared.subtract(fourAC), new BigDecimal("0"), bSquared.subtract(fourAC)));
 		root1 = root1.divide(twoA);
 		computedRoots.add(root1.setScale(5,BigDecimal.ROUND_HALF_UP));
 		root2 = (b).subtract(squareRoot(bSquared.subtract(fourAC), new BigDecimal("0"), bSquared.subtract(fourAC)));
 		root2 = root2.divide(twoA);
 		computedRoots.add(root2.setScale(5,BigDecimal.ROUND_HALF_UP));
-		for (BigDecimal r : computedRoots) {
-			System.out.println(r.toString());
-		}
+		/*for (BigDecimal r : computedRoots) {
+			//System.out.println(r.toString());
+		}*/
 
 	}
 
@@ -152,14 +153,11 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 		if (num.compareTo(BigInteger.ZERO) <= 0 || den.compareTo(BigInteger.ZERO) <= 0) {
 			return false;
 		}
-		//Fraction ff = new Fraction(num,den);
 		if (num.mod(den).equals(BigInteger.ZERO)) {
-			//System.out.println(f.toString());
 			return true;
 		}
 
 		else {
-			//System.out.println("no");
 			return false;
 		}
 	
@@ -173,7 +171,7 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 			return Globals.INTEGER_NEGATIVE_ONE;
 		}
 		Fraction ff = new Fraction(num,den);
-		System.out.println(ff);
+		//System.out.println(ff);
 		if (isWholeNumber(ff)) {
 				return num.divide(den);
 			}
@@ -184,22 +182,25 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 
 	}
 
+
+
 	BigInteger weinerAttack() {
+		try {
+		//System.out.println(this.publicExponent.toString() + " is the public exponent");
+		//System.out.println(this.publicModulus.toString() + " is the public modulus");
 		ContinuedFraction toAttack = new ContinuedFraction(new Fraction(this.publicExponent,this.publicModulus));
 		toAttack.generate(); //generate coef list
 		int maxConvergents = toAttack.getMaxConvergentSize();
 		for (int i = 1; i <= maxConvergents; i++) {
-			System.out.println(" I am in iteration " + (i - 1) + " out of " + (maxConvergents-1));
+			//System.out.println(" I am in iteration " + (i - 1) + " out of " + (maxConvergents-1));
 			Fraction toTest = toAttack.evaluate(i); //get ith convergent
-			System.out.println(toTest.toString() + " == k/d");
+			//System.out.println(toTest.toString() + " == k/d");
 			if ((toTest.getDen().mod(new BigInteger("2"))).equals(BigInteger.ZERO)) {
-				System.out.println("Err: even value for d");
+				//System.out.println("Err: even value for d");
 				continue;
 			}
 			
 			else {
-			//	System.out.println("----------------");
-				//boolean t = isWholeNumber(toTest);
 				BigInteger possiblePhi = calcPhiN(toTest);
 				if (possiblePhi.equals(Globals.INTEGER_NEGATIVE_ONE)) {
 					if (maxConvergents != i) {
@@ -208,7 +209,7 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 
 
 				}
-				System.out.println("My possible phi is" + possiblePhi.toString());
+				//System.out.println("My possible phi is" + possiblePhi.toString());
 				if (toTest.getNum().equals(BigInteger.ONE) && toTest.getDen().equals(BigInteger.ONE)) {
 					continue;
 				}
@@ -219,7 +220,7 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 					for (BigDecimal potentialRoot : computedRoots) {
 						product = product.multiply(potentialRoot);
 					}
-					System.out.println(product.toString() + " == " + publicModulus.toString());
+					//System.out.println(product.toString() + " == " + publicModulus.toString());
 					//System.out.println(possiblePhi.toString());
 					//
 					if (product.equals((new BigDecimal(publicModulus)).setScale(10,BigDecimal.ROUND_HALF_UP))) {
@@ -230,97 +231,91 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 					else {
 						continue;
 					}
-					//quadratic formula test
+
 				}
 			}
 
-			}
-		
-		System.out.println("phiN is here : "  + phiN);
-
-		System.out.println("We may calculate the decryption key, which is: " + (publicExponent.modInverse(phiN)).toString());
-			
-		for (BigDecimal b : computedRoots) {
-			System.out.println("Root : " + b.toString());
 		}
+		
 		return publicExponent.modInverse(phiN);
 	}
+	catch(NullPointerException npe) {
+		//System.out.println(this.publicExponent + "== e\n" + this.publicModulus + "==N\n");
+		return Globals.INTEGER_NEGATIVE_ONE;
+		}
+	}
 	
+
 
 
 	
 
 	public static void main(String[] args) {
-		//WienerAttack wa = new WienerAttack(new BigInteger("160523347"), new BigInteger("60728973"));
-		//WienerAttack wa = new WienerAttack(new BigInteger("47897"), new BigInteger("38831"));
-		//wa.weinerAttack();
-		//wa2.weinerAttack();
-		//wa.phiN = new BigInteger("64000");
-		//wa.findRoots();
-		BigDecimal sixtyfour = new BigDecimal("273349.0");
-		BigDecimal zero = new BigDecimal("0");
-		int maxIters = (sixtyfour.toBigInteger()).bitCount();
-		//WienerAttack wa2 = new WienerAttack(new BigInteger("619369"), new BigInteger("427705"));
-		//wa2.weinerAttack();
-		//System.out.println("The square root of 64 is "+squareRoot(sixtyfour,zero,sixtyfour))		;
-		//System.out.println("The fourth root of 64 is" + fourthRoot(sixtyfour,zero,sixtyfour));
-		BigInteger p = primes.generatePrimeOfSize(300);
-		BigInteger q = primes.generatePrimeOfSize(300);
+//try {
+	
+		//while(true) {
+		BigInteger p = primes.generatePrimeOfSize(7);
+		BigInteger q = primes.generatePrimeOfSize(7);
 		BigInteger publicMod = p.multiply(q);
 		BigInteger actualPhi = primes.phiOfPrimes(p,q);
-		//BigInteger publicMod = new BigInteger("47897");
-		//BigInteger actualPhi = new BigInteger("47460");
+
 		System.out.println("My public modulus is " + publicMod.toString() + " and has " + publicMod.toString(2).length() + " bits");
-		System.out.println("My actual phi of N is " + actualPhi.toString() );
-		BigDecimal capOnDVal = fourthRoot(new BigDecimal(publicMod.divide(new BigInteger("3"))), new BigDecimal("0"), new BigDecimal(publicMod.divide(new BigInteger("3"))));
-		BigInteger integralCap = capOnDVal.toBigInteger();
+	    System.out.println("My actual phi of N is " + actualPhi.toString() );
+		BigDecimal capOnDVal = fourthRoot(new BigDecimal(publicMod), new BigDecimal("0"), new BigDecimal(publicMod)).divide(Globals.DECIMAL_THREE, 10, BigDecimal.ROUND_HALF_UP);
+		System.out.println("1/3 N^(1/4) = " + capOnDVal.toString());
+		
+		//BigInteger integralCap = capOnDVal.toBigInteger();
+		BigInteger integralCap = actualPhi;
 		int numBits = (publicMod.toString(2)).length()/4;
 		//generate appropriate d value
 		BigInteger testD = new BigInteger("0");
-		Random r = new Random();
-		while(true) {
-			testD = new BigInteger(numBits,r);
-			if (testD.equals(Globals.INTEGER_ONE) || testD.equals(Globals.INTEGER_ZERO)) {
-				System.out.println("Err: testD(" + testD.toString() + " ) ==  " + Globals.INTEGER_ONE.toString());
-				continue;
-			}
-			if (testD.compareTo(integralCap) > 0) {
-				System.out.println("Err: testD(" + testD.toString() + ") > integralCap(" + integralCap.toString()+")");
-				continue;
-			}
-			if (!testD.gcd(actualPhi).equals(Globals.INTEGER_ONE)) {
-				System.out.println("Err: not coprime: " + testD.toString());
-				continue;
-			}
-			if (testD.gcd(actualPhi).equals(Globals.INTEGER_ONE)) {
-				if (testD.modInverse(actualPhi).compareTo(actualPhi) >= 0) {
-					System.out.println("Err: e > phi(n)");
-					continue;
-				}
-			}
-			System.out.println(testD.toString());
-			break;
-		}
-		System.out.println("My d value is " + testD);
-		System.out.println("Largest possible d value is " + capOnDVal.toString() +  " which has " +  numBits + " bits");
-		BigInteger publicExponent = testD.modInverse(actualPhi);
-		System.out.println("Public exponent is now : " + publicExponent.toString());
+		boolean found = false;
+		ArrayList<BigInteger> toTest = new ArrayList<BigInteger>();
+			int upper = integralCap.intValue();
 
-		WienerAttack wa2 = new WienerAttack(publicMod, publicExponent );
-		wa2.publicModulus = publicMod;
-		wa2.publicExponent = publicExponent;
+			/*if (upper <= 2) {
+				continue;
+			}*/
+			for (int i = 2; i < upper; i++) {
+				BigInteger testVal = new BigInteger(i+"");
+				if (testVal.gcd(actualPhi).equals(Globals.INTEGER_ONE)) {
+					//System.out.println(testVal.toString() + "   " + actualPhi.toString());
+					//System.out.println(testVal.modInverse(actualPhi).toString());
+					if (testVal.modInverse(actualPhi).compareTo(actualPhi) < 0) {
+						found = true;
+						testD = testVal;
+						toTest.add(testD);
+					//	break;
+					}
+				}
+
+			}
+			/*if (found == false) {
+				continue; //couldn't find appropriate key in range, starting over
+			}*/
+			
+		for(BigInteger t : toTest) {
+		BigInteger publicExponent = t.modInverse(actualPhi);
+
+
+		WienerAttack wa2 = new WienerAttack(publicMod, publicExponent);
+
 		
 		BigInteger dVal = wa2.weinerAttack();
-		if (dVal.equals(testD)) {
-			System.out.println("Attack succeeded");
+		if (!dVal.equals(Globals.INTEGER_NEGATIVE_ONE)) {
+			System.out.println("Attack succeeded for d = " + dVal.toString());
+			System.out.println("Successful e = " + publicExponent.toString());
+
 		}
 		else {
-			System.out.println("Attack failed");
+			System.out.println("Attack failed for d = " + t.toString());
+			System.out.println("Failed e = " + publicExponent.toString());
 		}
-		//now, a simple algo to choose e such that we get d
-
 	}
-
-
+	//}
+//}
+}
 
 }
+
+
