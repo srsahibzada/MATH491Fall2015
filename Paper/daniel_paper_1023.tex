@@ -3,8 +3,15 @@
 \usepackage{graphicx}
 \usepackage{bm}
 \usepackage{graphicx}
+<<<<<<< HEAD
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+
+=======
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
 \newtheorem{theorem}{Theorem}
+>>>>>>> origin/master
 \begin{document}
 
 
@@ -93,6 +100,11 @@ It was a long-standing conjecture, until it was proved in 1964 [2], that the onl
 In Section 3, we describe some limitations of this approach, and describe an optimization.
 
 \subsection{Lucas Numbers and Associated Identities}
+<<<<<<< HEAD
+Insofar as the Fibonacci and Lucas sequences, and their sums, may be developed in different ways with various identities and recurrences, a large number of identities connecting these two related sequences are known. These identities serve as the computational basis for many conjectures and family of sums involving the Lucas and Fibonacci sequences, as proposed in "Sums of Certain Products of Fibonacci and Lucas Numbers". \\
+$F_{n+k} + F_{n-k} = F_{n}L_{k}$, even $k$\\
+$F_{n+k} + F_{n-k} = L_{n}F_{k}$, odd $k$\\$F_{n+k} - F_{n-k} = F_{n}L_{k}$, odd $k$ \\ $F_{n+k} - F_{n-k} = L_{n}F_{k}$, even $k$ \\ $L_{n+k} + L_{n-k} = L_{n}L_{k}$, even $k$ \\ $L_{n+k} - L_{n-k}= F5_{n}F_{k}$, even $k$ \\ $L_{n+k} + L_{n-k} = F_{n}L_{k}$, even $k$\\ $L_{n}^{2} - L_{2n} = -2 = -L_{0}$, odd $n$\\ $5F_{2n}^{2} - L_{2n}^{2} = -4 = -L_{0}^{2}$\\ $5F_{2n}^{2} - L_{4n} = -2 = L_{0}$\\\\  It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
+=======
 <<<<<<< Updated upstream
 Insofar as the Fibonacci and Lucas sequences, and their sums, may be developed in different ways with various identities and recurrences, a large number of identities connecting these two related sequences are known. These identities serve as the computational basis for many conjectures and family of sums involving the Lucas and Fibonacci sequences, as proposed in "Sums of Certain Products of Fibonacci and Lucas Numbers". 
 =======
@@ -135,6 +147,7 @@ $\Sigma_{k=1}^n F_{k}^2F_{k+1}^2...F_{k+4m}^2F_{2k+4m}=\frac{F_{n}^2F_{n+1}^2...
 \begin{theorem}
 $\Sigma_{k=1}^n L_{k}^2L_{k+1}^2...L_{k+4m}^2F_{2k+4m}=[\frac{L_{k}^2L_{k+1}^2...L_{k+4m+1}^2}{5F_{4m+2}}]_{0}^n$
 \end{theorem} It is possible to obtain individual Lucas numbers from Fibonacci numbers using various identities relating these quantities:\\$L_{n} = F_{n-1} + F_{n+1}$ \\ 
+>>>>>>> origin/master
 \[
 \begin{bmatrix}
 L_{n+1} \\
@@ -148,14 +161,42 @@ F_{n+1} \\
 L_{n}
 \end{bmatrix} = Q_{L} \begin{bmatrix} L_{n} \\ L_{n-1}\end{bmatrix}
 \] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$
+\\
+\\
+The identities relating the Fibonacci and Lucas numbers are significant in their use proving the following theorems for the construction of a family of sums of the Fibonacci numbers.\\ \\
+\textit{Theorem 1:}  
+
+\\\begin{theorem}
+$\Sigma_{k=1}^{n} F_{k}F_{k+1}...F_{k+4m+2}L{k+2m+1} = \frac{F_{n}F{n+1}...F{n+4m+3}}{F_{2m+2}}$
+\end{theorem},\\
+
+\begin{theorem}
+$\Sigma_{k=1}^{n} L_{k}L_{k+1}...L_{k+4m+2}F_{k+2m+1}=[\frac{L_{k}L_{k+1}...L_{k+4m+3}}{5F_{2m+2}}]_{0}^n$
+\end{theorem}\\ \\
+
+\textit{Theorem 2:}
+
+\\\begin{theorem}
+$\Sigma_{k=1}^n F_{k}^2F_{k+1}^2...F_{k+4m}^2F_{2k+4m}=\frac{F_{n}^2F_{n+1}^2...F_{n+4m+1}}{F_{4m+2}}$
+\end{theorem},\\
+
+\begin{theorem}
+$\Sigma_{k=1}^n L_{k}^2L_{k+1}^2...L_{k+4m}^2F_{2k+4m}=[\frac{L_{k}^2L_{k+1}^2...L_{k+4m+1}^2}{5F_{4m+2}}]_{0}^n$
+\end{theorem}
+
+
 
 \section{Computational Approach}
 \subsection{Implementation Detail}
+<<<<<<< HEAD
+Various languages and operating systems were used to implement each part of this investigation. Particularly, the Fibonacci and Lucas generators were implemented in Python 2.7 and run on a Mac operating system, while the code to verify the Fibonacci and Lucas identities was written in Java. Due to the portability of the Java Virtual Machine, the operating systems on which all Java code was run were not kept consistent. Finally, C/C++ code was written and run on both a Mac operating system and Windows 8 in both the Dev-C++ IDE and on the Mac terminal. Also utilized was the Ada supercomputer based in Texas A\&M University. Ada has a Linux-based operating system, 845 compute nodes, and 20 cores per node; its peak performance is 337 teraflops, or $10^{12}$ floating-point operations per second. \\
+=======
 <<<<<<< Updated upstream
 Various languages and operating systems were used to implement each part of this investigation. Particularly, the Fibonacci and Lucas generators were implemented in Python 2.7 and run on a Mac operating system, while the code to verify the Fibonacci and Lucas identities was written in Java. Due to the portability of the Java Virtual Machine, the operating systems on which all Java code was run were not kept consistent. Finally, C/C++ code was written and run on both a Mac operating system and Windows 8 in both the Dev-C++ IDE and on the Mac terminal. Also utilized was the Ada supercomputer based in Texas A'\&'M University. Ada has a Linux-based operating system, 845 compute nodes, and 20 cores per node; its peak performance is 337 teraflops, or $10^{12}$ floating-point operations per second. \\
 =======
 Various languages and operating systems were used to implement each part of this investigation. Particularly, the Fibonacci and Lucas generators were implemented in Python 2.7 and run on a Mac operating system, while the code to verify the Fibonacci and Lucas identities was written in Java. Due to the portability of the Java Virtual Machine, the operating systems on which all Java code was run were not kept consistent. Finally, C/C++ code was written and run on both a Mac operating system and Windows 8 in both the Dev-C++ IDE and on the Mac terminal. Also utilized was the Ada supercomputer based in Texas A\&M University. Ada has a Linux-based operating system, 845 compute nodes, and 20 cores per node; its peak performance is 337 teraflops, or $10^{12}$ floating-point operations per second. \\
 >>>>>>> Stashed changes
+>>>>>>> origin/master
 Libraries used for computations included GNU Multi-Precision Arithmetic Library (GMP) for working with some large numbers in the C++ code on the Fibonacci squares; Sage, an open-source, Python-based mathematical language with support for various number-theoretic functions; and BigInteger, a Java API allowing for arbitrary-precision arithmetic. Parallel code in C++ utilized the POSIX threads, while parallel code in Java utilized the Runnable interface.
 \subsection{Fibonacci Squares}
 [1] found that the only Fibonacci numbers up to $F_{1000000}$ are the three described above using a computational approach. The researchers here took a similar approach, but used optimization techniques to decrease running time and to give more conclusive results. The programming language used in this research was predominantly C++.
@@ -170,6 +211,9 @@ Suppose we take a list of primes: $p_1, p_2, \dots , p_n$, and let the Fibonacci
 The computation in [1] was somewhat limited for two reasons. First, for each prime $p$, the quadratic residues and non-residues mod $p$ had to be re-iterated all the way to the computation limit (in the paper, the computation limit is $10^6$). This means that a loop of size $10^6$ had to be performed each time a new prime was considered. The computation here is superior for another reason: any $F_k$ with $k \not\equiv a \pmod L$ where $F_a$ is a perfect square is therefore also not a perfect square. This is because if $k \not\equiv a \pmod L$, then there exists some $d_i$ for which $k \not\equiv a \pmod d_i$, which also means that $F_k$ is not a quadratic residue modulo $p_i$, which means $F_k$ cannot be a perfect square. Because $10^6$ is not perfectly divisible by each of the Fibonacci periods considered, the computation cannot easily be extended to all positive integers, but the computation here can. This is how the approach was optimized.
 
 \subsection{Lucas Numbers and Various Identities}
+<<<<<<< HEAD
+
+=======
 Insofar as the Lucas sequence and the Fibonacci sequence are closely related, it is possible to derive the Lucas numbers from the Fibonacci sequence; furthermore, a similar generator matrix exists for the Lucas numbers as for the Fibonacci numbers. Various methods were used to implement the Lucas number generators, in particular utilizing the identity $L_{n} = F_{n-1} + F_{n+1}$ as well as the matrix identity detailled in the previous section. The generation of Fibonacci numbers relied on the exponentiation of the matrix \[
 \begin{bmatrix}
 1 1\\
@@ -194,10 +238,15 @@ F_{n+1} \\
 L_{n}
 \end{bmatrix} = Q_{L} \begin{bmatrix} L_{n} \\ L_{n-1}\end{bmatrix}
 \] , where we define $Q_{L} = \begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$. This was implemented with Sage using its pre-optimized matrix constructors and matrix multiplication. The Sage library contains an implementation of Strassen matrix multiplication, which runs in $O(n^{2.81})$: over very large numbers, this is a marked improvement over the $O(n^{3})$ complexity of the naive matrix multiplication. This was also used to generate the first million Lucas numbers.
+>>>>>>> origin/master
 
 
 The Fibonacci numbers, as well as the Lucas numbers, generated above, were used to investigate a series of identities involving sums and products of Fibonacci and Lucas numbers. Due to the nature of the BigInteger API, the sole limitation on the maximum precision allowed for this investigation was the availability of memory on the systems on which this code was tested. Each identity was implemented as a part of a larger class called FiboAndLucas, whose design was not fully object-oriented in nature and as such did not utilize many of the object-oriented features offered in Java. In the parallel implementation, each identity was tested from $n, k = 0$ to $n, k = 500$; each identity was tested at all possible values in its own thread. In the serial implementation, each identity was tested from $n,k = 0$ to $n,k = 250$ due to limitations on the system.
 \section{Results and Conclusion}
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 \subsection{Fibonacci Squares}
 Since the value of $L$ cannot be too large for our purposes (the computational size is linear in $L$), we must find primes with relatively small Fibonacci periods. To do this, we limited our primes $p_i$ to below $10^5$, and gave limits on $v_2(d_i)$, $v_3(d_i)$, $v_5(d_i)$, $v_7(d_i)$, $v_9(d_i)$, $v_{11}(d_i)$ where $v_q(d_i)$ is the power of prime $q$ in the prime factorization of $d_i$. Different files were generated based on these limits, each specifying a value of $L$. After this algorithm was run on each file, the possible residues $r_1, r_2, \dots \pmod L$ such that $F_{r_1}, F_{r_2}, \dots$ can be perfect squares were outputted.
 
@@ -213,7 +262,10 @@ $L$ & Number of primes & Execution time (s) \\ \hline
 63504000 & 163 & 105.61 \\ \hline \hline
 \end{tabular}
 
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
+>>>>>>> origin/master
 \subsection{Lucas Numbers and Various Identities}
 This code was run serially on a Mac operating system; it was not run on Ada. Due to ranging errors, results could be verified only up to $n,k=250$. Results are below:
 \begin{tabular}{ccc}
@@ -257,6 +309,9 @@ The speedup and efficiency up to $n,k=250$ were calculated, as serial code was a
 Therefore, the maximum speedup obtained over the serial code reduced the execution time to 2.5 percent of its original execution time. No consistent behavior was observed with efficiency, however, except for that the ratio was consistently low. This is likely due to the fact that each computation was performed in an individual thread, thereby utilizing parallelism as a means to accomplish some tasks in parallel, but not taking advantage of the full capacities of either parallelism or the number of threads. It is relevant to note that as the number of threads used in this implementation remained constant, the speedup is simply a scalar multiple of the efficiency, with the other factor being the number of threads used.
 
 
+<<<<<<< HEAD
+\\Generating Fibonacci and Lucas sequences is a simple task.  What is difficult is being able to decide whether a given number belongs to either of the sequences.  The general method requires you to start at the beginning and generate the entire list up until the number in question.  This is an arduous task and fairly inefficient when working with large numbers.  This presents an interesting application to cryptosystems.  As mentioned in [$5$], there are methods of creating keys to crytposystems by using Fibonacci and Lucas sequences to generate a vector.  This creates a very secure network because there is only one unique solution to each sequence.  By combining our optimized creation of the sequences with the identities computationally verified, we could extend this project into cryptography by attempting to create a unique sequence to be used in a symmetric cryptosystem.       
+=======
 =======
 \section{Results and Conclusion}
 \subsection{Fibonacci Squares}
@@ -266,10 +321,13 @@ Since the value of $L$ cannot be too large for our purposes (the computational s
 In each run, we got that the only possible Fibonacci numbers that can be perfect squares were the ones with indices $1, 2, 12 \pmod{L}$, confirming the computation done in [1] and the proof done in [2]. Execution times on Ada are summarized as follows:
 
 <<<<<<< Updated upstream
+>>>>>>> origin/master
 \section{Individual Contributions}
 
 \begin{enumerate}
 \item Sarah: Wrote code to verify various identities on Lucas and Fibonacci sums; wrote small scripts to generate Lucas and Fibonacci numbers based on known identities; implemented the Fibonacci squares algorithm in parallel in C; re-implemented the Fibonacci and Lucas sum code in parallel. Developed some theoretical background on the Lucas sequence. Verified Fibonacci squares conjecture in the supercomputer. Write computational approaches aspect of paper.
+<<<<<<< HEAD
+=======
 =======
 \begin{tabular}{ccc}
 \hline
@@ -281,8 +339,13 @@ $L$ & Number of primes & Execution time (s) \\ \hline
 63504000 & 163 & 105.61 \\ \hline \hline
 \end{tabular}
 >>>>>>> Stashed changes
+>>>>>>> origin/master
 
 
+<<<<<<< HEAD
+\item Taylor: Ran code to verify Lucas conjectures; Provided background research and analysis of results. 
+\end{enumerate}
+=======
 \subsection{Lucas Numbers and Various Identities}
 This code was run serially on a Mac operating system; it was not run on Ada. Due to ranging errors, results could be verified only up to $n,k=250$. Results are below: \\ \\
 \begin{tabular}{ccc} \\
@@ -324,6 +387,7 @@ The speedup and efficiency up to $n,k=250$ were calculated, as serial code was a
  \hline \hline
 \end{tabular} \\ \\
 Therefore, the maximum speedup obtained over the serial code reduced the execution time to 2.5 percent of its original execution time. No consistent behavior was observed with efficiency, however, except for that the ratio was consistently low. This is likely due to the fact that each computation was performed in an individual thread, thereby utilizing parallelism as a means to accomplish some tasks in parallel, but not taking advantage of the full capacities of either parallelism or the number of threads. It is relevant to note that as the number of threads used in this implementation remained constant, the speedup is simply a scalar multiple of the efficiency, with the other factor being the number of threads used.
+>>>>>>> origin/master
 
 \section{References}
 
@@ -339,6 +403,9 @@ Therefore, the maximum speedup obtained over the serial code reduced the executi
 \item Luma, A., and B. Raufi. "Relationship between Fibonacci and Lucas Sequences and Their Application in Symmetric Cryptosystems." \textit{Latest Trends on Circuits, Systems, and Signals} (n.d.): n. pag. \textit{WSEAS Conference}. Web. 23 Oct. 2015.
 \end{enumerate}
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/master
 \end{document}

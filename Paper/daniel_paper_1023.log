@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.6.4)  4 NOV 2015 09:22
+=======
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  23 OCT 2015 16:20
+>>>>>>> origin/master
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -151,6 +155,35 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
+<<<<<<< HEAD
+(C:\Users\Owner\AppData\Roaming\MiKTeX\2.9\tex\latex\amscls\amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks26
+)
+(C:\Users\Owner\Documents\GitHub\MATH491Project3\Paper\daniel_paper_1023.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+
+(C:\Users\Owner\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+=======
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2004/08/06 v2.20
 \thm@style=\toks22
@@ -182,10 +215,21 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+>>>>>>> origin/master
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count108
 \scratchdimen=\dimen119
 \scratchbox=\box29
+<<<<<<< HEAD
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen120
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks28
+=======
 \nofMPsegments=\count109
 \nofMParguments=\count110
 \everyMPshowfont=\toks28
@@ -251,6 +295,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 28.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+>>>>>>> origin/master
 ) [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -264,31 +309,125 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--100
  []
 
 
+<<<<<<< HEAD
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 97--100
+>>>>>>> origin/master
 
  []
 
 [2]
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 105--107
+>>>>>>> origin/master
 
  []
 
 
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 112--117
+>>>>>>> origin/master
 
  []
 
 
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in paragraph at lines 114--119
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 112--117
+>>>>>>> origin/master
 
  []
 
 
+<<<<<<< HEAD
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.120 \\\begin
+              {theorem}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.120 \\\begin{theorem}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.122 \end{theorem}
+                   ,\\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 129--130
+>>>>>>> origin/master
 
  []
 
 
+<<<<<<< HEAD
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.124 \begin{theorem}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.126 \end{theorem}
+                   \\ \\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
@@ -305,15 +444,142 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--183
 
 [6] [7]
 Underfull \hbox (badness 10000) in paragraph at lines 226--252
+>>>>>>> origin/master
 
  []
 
 
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 226--252
+>>>>>>> origin/master
 
  []
 
 
+<<<<<<< HEAD
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.130 \\\begin
+              {theorem}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.130 \\\begin{theorem}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.132 \end{theorem}
+                   ,\\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
+
+ []
+
+
+! LaTeX Error: Environment theorem undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.134 \begin{theorem}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{theorem}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.136 \end{theorem}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[3] [4] [5]
+! Use of \@array doesn't match its definition.
+\hline ...lewidth \futurelet \reserved@a \@xhline 
+                                                  
+l.208 \hline
+            
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+! Use of \@array doesn't match its definition.
+<argument> \edef \reserved@a {
+                              \reserved@a x}\advance \@tempcnta \m@ne 
+l.208 \hline
+            
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+! Use of \@array doesn't match its definition.
+<argument> \edef \reserved@a {\reserved@a x
+                                           }\advance \@tempcnta \m@ne 
+l.208 \hline
+            
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+Runaway definition?
+->\noalign {\hrule height\arrayrulewidth \futurelet }\@tempcnta 0\relax \ETC.
+! TeX capacity exceeded, sorry [main memory size=3000000].
+<argument> ...lax \edef \reserved@a {\reserved@a x
+                                                  }\advance \@tempcnta \m@ne...
+l.208 \hline
+            
+If you really absolutely need more capacity,
+you can ask a wizard to enlarge me.
+
+ 
+Here is how much of TeX's memory you used:
+ 2113 strings out of 493921
+ 27314 string characters out of 3144877
+ 3000001 words of memory out of 3000000
+ 5407 multiletter control sequences out of 15000+200000
+ 17967 words of font info for 62 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,8n,20p,1035b,249s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 226--252
 
  []
@@ -366,3 +632,4 @@ PDF statistics:
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+>>>>>>> origin/master
