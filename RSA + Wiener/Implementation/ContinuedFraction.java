@@ -261,7 +261,7 @@ public class ContinuedFraction {
 		//return hash;
 	}
 	public static void main(String[] args) {
-		System.out.println("hello!!");
+		//System.out.println("hello!!");
 		Fraction test = new Fraction(new BigInteger("32857"), new BigInteger("47897"));
 		//Fraction test2 = new Fraction(new BigInteger("42667"), new BigInteger("64741"));
 		ContinuedFraction cf = new ContinuedFraction(test);
