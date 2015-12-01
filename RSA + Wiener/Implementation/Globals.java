@@ -49,7 +49,16 @@ public class Globals {
 	public static BigDecimal DECIMAL_NEGATIVE_NINE = new BigDecimal("-9");
 	public static BigDecimal DECIMAL_NEGATIVE_TEN = new BigDecimal("-10");
 
+	//useful strings
+	public static String COMMA = ",";
+	public static String TAB = "\t";
+	public static String NEWLINE = "\n";
+	public static String CSVSTRING = ".csv";
+	public static String TXTSTRING = ".txt";
 
+	//CharSequences
+	public static CharSequence DOTTXT = ".txt";
+	public static CharSequence DOTCSV = ".csv";
 
 
 
