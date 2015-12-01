@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 #include "nt_algorithms.h"
 using namespace std;
 
@@ -15,16 +16,17 @@ using namespace std;
 //const int64 e = 2621LL;
 
 // these work beautifully. d = 2011
-const int64 n = 570939058931LL;
-const int64 e = 62743509091LL;
+const int64 n = 551;//570939058931LL;
+const int64 e = 101;//62743509091LL;
 
 // Test for correctness of k, d.
 // Described in original Wiener paper.
 int wiener_test(int k, int d)
 {
     // candidate for phi(n)
-    long long phi_n = (e*d)/k;
+    long long phi_n = (e*d - 1)/k;
     long long g = e*d % k;
+    if(g == 0) g = 1;
 
     // a = (p + q)
     long long a = n - phi_n + 1;
@@ -60,6 +62,7 @@ main()
         i += 2;
     }
     i -= 2;
+    i = max(i, 0LL);
 
     // now find i-th and (i+1)-th convergent
     pair<int, int> c1 = convergent(e, n, i);
@@ -71,10 +74,11 @@ main()
     // to get estimates for k/d
     // note that del can't be too big, and u >= v always
     for(int del = 0; del < 100; ++del) {
-        for(int u1 = 1; u1 < 5000; ++u1) {
-            for(int v1 = 1; v1 <= u1; ++v1) {
+        for(int u1 = 0; u1 < 5000; ++u1) {
+            for(int v1 = 0; v1 <= u1; ++v1) {
                 int k = c2.first * u1 + c1.first * (u1 * del + v1);
                 int d = c2.second * u1 + c1.second * (u1 * del + v1);
+                if(k == 0 || d == 0) continue;
 
                 int res = wiener_test(k, d);
                 if(res == 0) {
