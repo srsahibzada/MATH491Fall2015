@@ -46,7 +46,7 @@ import java.util.*;
 			qSize = q;
 			numTests = n;
 			fileName = file;
-			new Thread(this).start();
+			//new Thread(this).start();
 		}
 
 		public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal max) {
@@ -132,20 +132,25 @@ import java.util.*;
 				//public FileData(String n, String phi, String e, String d, String fraction, String successful)
 				//System.out.println("Attack succeeded for d = " + t.toString());
 				//System.out.println(" e = " + publicExponent.toString());
+				synchronized(toWrite) {
 				FileData fd = new FileData(publicMod.toString(),actualPhi.toString(),test, t.toString(), strRepCapOnDVal, "1");
 				toWrite.add(fd);
+				//System.out.println(fd.toString());
+				}
 
 			}
 			else {
 			//	System.out.println("Attack failed for d = " + t.toString());
 			//	System.out.println("Failed e = " + publicExponent.toString());
+			synchronized(toWrite) {
 				FileData fd = new FileData(publicMod.toString(),actualPhi.toString(),test, t.toString(), strRepCapOnDVal, "0");
 				toWrite.add(fd);
 			}
+		}
 	}
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		int p=0,q=0,numTests=0;
 		String file = "";
 		if (args.length != 4) {
@@ -179,12 +184,16 @@ import java.util.*;
 		BufferedWriter bwriter = null;
 		long start = System.nanoTime();
 		ArrayList<FileData> globalData = new ArrayList<FileData>();
-
+		Thread tds[] = new Thread[numTests];
 		for (int i = 0; i < numTests; i++) {
-			WienerTester w = new WienerTester(p,q,numTests,file);
+			//WienerTester w = new WienerTester(p,q,numTests,file);
 			//w.run();
 			//w.WienerTest();
-
+			tds[i] = new Thread(new WienerTester(p,q,numTests,file));
+			tds[i].start();
+		}
+		for (int i = 0; i < numTests; i++) {
+			tds[i].join();
 		}
 		long end = System.nanoTime();
 		System.out.println("Ran in " + (end - start)/1000000 + "ms ");
@@ -198,6 +207,7 @@ import java.util.*;
 			FileWriter write = new FileWriter(output);
 			bwriter = new BufferedWriter(write);
 			for (FileData f: globalData) {
+				//System
 				bwriter.write(f.toString());
 			}
 		}
@@ -205,6 +215,7 @@ import java.util.*;
 			System.out.println("Error in writing to file\n");
 			e.printStackTrace();
 		}
+		
 		finally {
 			try {
 				if (bwriter != null) {
