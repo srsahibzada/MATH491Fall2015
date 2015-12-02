@@ -46,6 +46,7 @@ import java.util.*;
 			qSize = q;
 			numTests = n;
 			fileName = file;
+			new Thread(this).start();
 		}
 
 		public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal max) {
@@ -102,6 +103,7 @@ import java.util.*;
 			/*if (upper <= 2) {
 				continue;
 			}*/
+		
 			for (int i = 2; i < upper; i++) {
 				BigInteger testVal = new BigInteger(i+"");
 				if (testVal.gcd(actualPhi).equals(Globals.INTEGER_ONE)) {
@@ -116,6 +118,7 @@ import java.util.*;
 				}
 
 			}
+			
 			/*if (found == false) {
 				continue; //couldn't find appropriate key in range, starting over
 			}*/
@@ -179,7 +182,7 @@ import java.util.*;
 
 		for (int i = 0; i < numTests; i++) {
 			WienerTester w = new WienerTester(p,q,numTests,file);
-			w.run();
+			//w.run();
 			//w.WienerTest();
 
 		}
