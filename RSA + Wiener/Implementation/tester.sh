@@ -16,7 +16,7 @@ javac Globals.java ContinuedFraction.java WienerAttack.java WienerTester.java
 
 MINBITSIZE=7
 MAXBITSIZE=10
-NUMTESTS=100 #simple test for right now
+NUMTESTS=10 #simple test for right now
 FILENAME="pqsize"
 OUT="output"
 DOTCSV=".csv"
