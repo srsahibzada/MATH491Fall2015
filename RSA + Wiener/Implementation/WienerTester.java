@@ -72,6 +72,12 @@ import java.util.*;
 
 	public void WienerTest() {
 
+	
+	//}
+	}
+
+	@Override
+	public void run() {
 		//while(true) {
 		BigInteger p = primes.generatePrimeOfSize(pSize);
 		BigInteger q = primes.generatePrimeOfSize(qSize);
@@ -134,13 +140,6 @@ import java.util.*;
 				toWrite.add(fd);
 			}
 	}
-	//}
-	}
-
-	@Override
-	public void run() {
-		WienerTest();
-		//System.out.println("completed a test\n");
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -180,8 +179,8 @@ import java.util.*;
 
 		for (int i = 0; i < numTests; i++) {
 			WienerTester w = new WienerTester(p,q,numTests,file);
-			//w.run();
-			w.WienerTest();
+			w.run();
+			//w.WienerTest();
 
 		}
 		long end = System.nanoTime();
