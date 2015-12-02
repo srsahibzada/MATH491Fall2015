@@ -1,7 +1,8 @@
-	import java.io.File;
-	import java.io.FileWriter;
-	import java.io.IOException;
-	import java.math.BigInteger;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.math.BigInteger;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -23,7 +24,12 @@ import java.util.*;
 			}
 			@Override
 			public String toString() {
-				return new String(nVal + "\t " +  phiN + "\t" +  eVal + "\t" +  dVal + "\t" + dCap + "\t" + success);
+				return new String(nVal  + Globals.COMMA 
+					+  phiN + Globals.COMMA 
+					+  eVal + Globals.COMMA 
+					+  dVal  + Globals.COMMA 
+					+ dCap + Globals.COMMA 
+					+ success + Globals.NEWLINE);
 			}
 
 		}
@@ -32,7 +38,7 @@ import java.util.*;
 		public static int qSize = 7; //default set to 7
 		public static int numTests = 100; //default set to 100
 		public static String fileName = "output.txt";
-		public static CharSequence fileExt = ".txt";
+		
 		private static ArrayList<FileData> toWrite = new ArrayList<FileData>();
 
 		public WienerTester(int p, int q, int n, String file) {
@@ -72,11 +78,11 @@ import java.util.*;
 		BigInteger publicMod = p.multiply(q);
 		BigInteger actualPhi = primes.phiOfPrimes(p,q);
 
-		System.out.println("My public modulus is " + publicMod.toString() + " and has " + publicMod.toString(2).length() + " bits");
-	    System.out.println("My actual phi of N is " + actualPhi.toString() );
+		//System.out.println("My public modulus is " + publicMod.toString() + " and has " + publicMod.toString(2).length() + " bits");
+	   // System.out.println("My actual phi of N is " + actualPhi.toString() );
 		BigDecimal capOnDVal = fourthRoot(new BigDecimal(p.multiply(q)), new BigDecimal("0"), new BigDecimal(publicMod)).divide(Globals.DECIMAL_THREE, 10, BigDecimal.ROUND_HALF_UP);
 		String strRepCapOnDVal = capOnDVal.toString();
-		System.out.println("1/3 N^(1/4) = " + capOnDVal.toString());
+		//System.out.println("1/3 N^(1/4) = " + capOnDVal.toString());
 		
 		//BigInteger integralCap = capOnDVal.toBigInteger();
 		BigInteger integralCap = actualPhi;
@@ -137,7 +143,7 @@ import java.util.*;
 		//System.out.println("completed a test\n");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int p=0,q=0,numTests=0;
 		String file = "";
 		if (args.length != 4) {
@@ -150,17 +156,27 @@ import java.util.*;
 			 q = Integer.parseInt(args[1]);
 			 numTests = Integer.parseInt(args[2]);
 			
-			if (args[3].contains(fileExt)) {
+			if (args[3].contains(Globals.DOTCSV)) {
+				//args[3] = "/MATH491Project3/RSA + Wiener/Implementation/OUTPUT" +  args[3];
 				file = args[3];
 			}
 			else {
-				System.out.println("Invalid file name; using 'output.txt' instead.");
+				System.out.println("Invalid file name; using 'output.csv' instead.");
+				file = "output.csv";
 			}
 			
 			
 		}
-
+		//write everything to a directory
+		//jk bash script
+		/*File directory = new File("/Desktop/MATH491Project3/RSA + Wiener/Implementation/OUTPUT");
+		if (!directory.exists()) {
+			directory.mkdir();
+		}*/
+		//files
+		BufferedWriter bwriter = null;
 		long start = System.nanoTime();
+		ArrayList<FileData> globalData = new ArrayList<FileData>();
 
 		for (int i = 0; i < numTests; i++) {
 			WienerTester w = new WienerTester(p,q,numTests,file);
@@ -172,7 +188,33 @@ import java.util.*;
 		System.out.println("Ran in " + (end - start)/1000000 + "ms ");
 		File outputFile = new File(fileName);
 		for (FileData f: toWrite) {
-			System.out.println(f.toString());
+			//System.out.println(f.toString());
+			globalData.add(f);
 		}
+		try {
+			File output = new File(file);
+			FileWriter write = new FileWriter(output);
+			bwriter = new BufferedWriter(write);
+			for (FileData f: globalData) {
+				bwriter.write(f.toString());
+			}
+		}
+		catch(IOException e) {
+			System.out.println("Error in writing to file\n");
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (bwriter != null) {
+					bwriter.close();
+				}
+			}
+			catch(Exception e) {
+				System.out.println("Couldn't close BufferedWriter\n");
+			}
+		}
+	//	wienerAttack wa = new wienerAttack(new BigInteger("4717"), new BigInteger("199"));
+	//	wa.weinerAttack();
+
 	}
 }

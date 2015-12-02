@@ -93,27 +93,6 @@ public static BigDecimal squareRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 
 }
 
-public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal max) {
-	BigDecimal midpoint = min.add(max).divide(new BigDecimal("2.0"));	
-	BigDecimal testSquare = midpoint.multiply(midpoint).multiply(midpoint).multiply(midpoint);
-	testSquare = testSquare.setScale(10,BigDecimal.ROUND_HALF_UP);
-	int found = testSquare.compareTo(arg);
-	if (found > 0) {
-		max = midpoint;
-		return fourthRoot(arg,min,max);
-	}
-	else if (found < 0) {
-		//System.out.println(midpoint.toString());
-		min = midpoint;
-		return fourthRoot(arg,min,max);
-	}
-	else {
-		//System.out.println(midpoint.toString());
-		return midpoint;
-	}
-
-
-}
 
 
 
@@ -144,7 +123,7 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 		root2 = root2.divide(twoA);
 		computedRoots.add(root2.setScale(5,BigDecimal.ROUND_HALF_UP));
 		/*for (BigDecimal r : computedRoots) {
-			//System.out.println(r.toString());
+			System.out.println(r.toString());
 		}*/
 
 	}
@@ -224,7 +203,7 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 						product = product.multiply(potentialRoot);
 					}
 					//System.out.println(product.toString() + " == " + publicModulus.toString());
-					//System.out.println(possiblePhi.toString());
+					System.out.println(possiblePhi.toString());
 					//
 					if (product.equals((new BigDecimal(publicModulus)).setScale(10,BigDecimal.ROUND_HALF_UP))) {
 						phiN = possiblePhi;
@@ -232,6 +211,8 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 						break;
 					} 
 					else {
+
+
 						continue;
 					}
 
@@ -247,7 +228,10 @@ public static BigDecimal fourthRoot(BigDecimal arg, BigDecimal min, BigDecimal m
 		return Globals.INTEGER_NEGATIVE_ONE;
 		}
 	}
-	
+	public static void main(String[] args) {
+		WienerAttack wa = new WienerAttack(new BigInteger("4717"), new BigInteger("199"));
+		wa.weinerAttack();
+	}
 
 
 	
