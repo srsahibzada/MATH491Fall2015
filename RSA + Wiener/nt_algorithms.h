@@ -11,6 +11,29 @@ int gcd(int a, int b)
     return gcd(b, a%b);
 }
 
+// returns a^-1 mod b
+int inverse(int a, int b)
+{
+    if(gcd(a, b) > 1) return -1;
+
+    int tmp = b;
+
+    int x = 1, y = 0;
+    int xLast = 0, yLast = 1;
+    int q, r, m, n;
+    while(a != 0) {
+        q = b / a;
+        r = b % a;
+        m = xLast - q * x;
+        n = yLast - q * y;
+        xLast = x, yLast = y;
+        x = m, y = n;
+        b = a, a = r;
+    }
+    if(xLast < 0) xLast += tmp;
+    return xLast;
+}
+
 // let m/n = <a_0, a_1, ... , a_n, ...>
 // this returns a_n
 // Precondition: denom > num

@@ -1,7 +1,8 @@
-#include <iostream>
+#include <fstream>
 #include <cmath>
 #include <algorithm>
 #include "nt_algorithms.h"
+#include <sstream>
 using namespace std;
 
 // change these when you want to test...
@@ -17,15 +18,18 @@ using namespace std;
 
 // these work beautifully. d = 2011
 //const int64 n = 4171;//570939058931LL;
-//const int64 e = 3299;//519034129091LL;
+//const int64 e = 3299;//62743509091LL;
 //const int64 n = 509758268111LL;
 //const int64 e = 441062571571LL;
+
+ifstream fin("output.txt");
+ofstream fout("output.csv");
 
 int64 n, e;
 
 // Test for correctness of k, d.
 // Described in original Wiener paper.
-int wiener_test(int k, int d)
+int wiener_test(int n, int e, int k, int d, int d_actual)
 {
     // candidate for phi(n)
     long long phi_n = (e*d - 1)/k;
@@ -45,17 +49,17 @@ int wiener_test(int k, int d)
 
     // we've found p and q!!
     long long p = abs(a/2 + sq_b), q = abs(a/2 - sq_b);
-    //if(p < 0 || q < 0) return 1;
+    if(p * q != n) return 1;
 
-    cout << "p == " << p << ", q == " << q << endl;
-    cout << "k == " << k << ", d == " << d/g << endl;
+    if(d/g != d_actual) return 1;
+
+    fout << p << "," << q << ',';
+    fout << k << "," << d/g << ',';
     return 0;
 }
 
-main()
+int go(int64 n, int64 e, int64 d_actual)
 {
-    cin >> n >> e;
-
     // u = sqrt(n)/4
     double u = sqrt(n);
     u /= 4;
@@ -66,15 +70,11 @@ main()
     while(true) {
         pair<int, int> c = convergent(e, n, i);
         double k = abs(double(e) / double(n) - double(c.first) / double(c.second));
-        cout << k << ' ' << 1/u << endl;
         if(k < 1 / u) break;
         i += 2;
     }
     i -= 2;
     i = max(i, 0LL);
-    cout << i << endl;
-
-
 
     // now find i-th and (i+1)-th convergent
     pair<int, int> c1 = convergent(e, n, i);
@@ -86,25 +86,52 @@ main()
     // to get estimates for k/d
     // note that del can't be too big, and u >= v always
     for(int del = 0; del < 50; ++del) {
-        for(int u1 = 0; u1 <= 1000; ++u1) {
+        for(int u1 = 0; u1 <= 200; ++u1) {
             for(int v1 = 0; v1 <= u1; ++v1) {
                 int k = c2.first * u1 + c1.first * (u1 * del + v1);
                 int d = c2.second * u1 + c1.second * (u1 * del + v1);
                 if(k == 0 || d == 0) continue;
 
-                //cout << k << ' ' << d << endl;
-                //system("pause");
-
-                int res = wiener_test(k, d);
+                int res = wiener_test(n, e, k, d, d_actual);
                 if(res == 0) {
-                    cout << "Success!\n";
-                    cout << "delta == " << del << ", u == " << u1 << ", v == " << v1 << endl;
-                    return 0;
+                    fout << del << "," << u1 << "," << v1 << ',' << 1 << '\n';
+                    return 1;
                     //system("pause");
                 }
             }
         }
     }
 
-    cout << "I've tried more than 2 billion iterations. I give up.\n";
+    fout << "0\n";
+    return 0;
+}
+
+main()
+{
+    int64 n, phin;
+    n = 570939058931LL, phin = 570937542000LL;
+
+    //fout << inverse(3, 19) << endl;
+    //while(fin >> n >> phin) {
+        //stringstream ss;
+        //ss << "output_" << n << ".csv";
+        //cout << ss.str().c_str() << endl;
+        //fout.close();
+        //fout.clear();
+        //fout.open(ss.str().c_str());
+
+        int uctr = 0;
+        for(int d = 3; d < phin; d += max(2LL, d / 100 - (d / 100) % 2)) {
+            while(gcd(d, phin) != 1) d += 2;
+
+            int e = inverse(d, phin);
+            fout << n << ',' << e << ',' << d << ',';
+            int succ = go(n, e, d);
+
+            // if unsuccessful 20 times in a row, quit
+            if(!succ) ++uctr;
+            else uctr = 0;
+            if(uctr == 20) break;
+        }
+    //}
 }
