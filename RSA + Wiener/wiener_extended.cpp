@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 #include "nt_algorithms.h"
 using namespace std;
 
@@ -15,16 +16,21 @@ using namespace std;
 //const int64 e = 2621LL;
 
 // these work beautifully. d = 2011
-const int64 n = 570939058931LL;
-const int64 e = 62743509091LL;
+//const int64 n = 4171;//570939058931LL;
+//const int64 e = 3299;//519034129091LL;
+//const int64 n = 509758268111LL;
+//const int64 e = 441062571571LL;
+
+int64 n, e;
 
 // Test for correctness of k, d.
 // Described in original Wiener paper.
 int wiener_test(int k, int d)
 {
     // candidate for phi(n)
-    long long phi_n = (e*d)/k;
+    long long phi_n = (e*d - 1)/k;
     long long g = e*d % k;
+    if(g == 0) g = 1;
 
     // a = (p + q)
     long long a = n - phi_n + 1;
@@ -38,7 +44,9 @@ int wiener_test(int k, int d)
     if(sq_b * sq_b != b) return 1;
 
     // we've found p and q!!
-    long long p = (a/2 + sq_b), q = (a/2 - sq_b);
+    long long p = abs(a/2 + sq_b), q = abs(a/2 - sq_b);
+    //if(p < 0 || q < 0) return 1;
+
     cout << "p == " << p << ", q == " << q << endl;
     cout << "k == " << k << ", d == " << d/g << endl;
     return 0;
@@ -46,9 +54,11 @@ int wiener_test(int k, int d)
 
 main()
 {
+    cin >> n >> e;
+
     // u = sqrt(n)/4
     double u = sqrt(n);
-    //u /= 4;
+    u /= 4;
 
     int i = 1;
     // find largest odd i s.t. 1/u <= |x - x_i|
@@ -56,10 +66,15 @@ main()
     while(true) {
         pair<int, int> c = convergent(e, n, i);
         double k = abs(double(e) / double(n) - double(c.first) / double(c.second));
+        cout << k << ' ' << 1/u << endl;
         if(k < 1 / u) break;
         i += 2;
     }
     i -= 2;
+    i = max(i, 0LL);
+    cout << i << endl;
+
+
 
     // now find i-th and (i+1)-th convergent
     pair<int, int> c1 = convergent(e, n, i);
@@ -70,17 +85,22 @@ main()
     // now exhaustively search on u, v, del(ta)
     // to get estimates for k/d
     // note that del can't be too big, and u >= v always
-    for(int del = 0; del < 100; ++del) {
-        for(int u1 = 1; u1 < 5000; ++u1) {
-            for(int v1 = 1; v1 <= u1; ++v1) {
+    for(int del = 0; del < 50; ++del) {
+        for(int u1 = 0; u1 <= 1000; ++u1) {
+            for(int v1 = 0; v1 <= u1; ++v1) {
                 int k = c2.first * u1 + c1.first * (u1 * del + v1);
                 int d = c2.second * u1 + c1.second * (u1 * del + v1);
+                if(k == 0 || d == 0) continue;
+
+                //cout << k << ' ' << d << endl;
+                //system("pause");
 
                 int res = wiener_test(k, d);
                 if(res == 0) {
                     cout << "Success!\n";
-                    cout << "u == " << u1 << ", v == " << v1 << endl;
+                    cout << "delta == " << del << ", u == " << u1 << ", v == " << v1 << endl;
                     return 0;
+                    //system("pause");
                 }
             }
         }

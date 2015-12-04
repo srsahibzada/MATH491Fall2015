@@ -1,12 +1,52 @@
 #include <iostream>
 #include <utility>
-#define int long long
+
+typedef long long int64;
+#define int int64
 
 // gcd algo
 int gcd(int a, int b)
 {
     if(b == 0) return a;
     return gcd(b, a%b);
+}
+
+// returns a^-1 mod b
+int inverse(int a, int b)
+{
+    if(gcd(a, b) > 1) return -1;
+
+    int tmp = b;
+
+    int x = 1, y = 0;
+    int xLast = 0, yLast = 1;
+    int q, r, m, n;
+    while(a != 0) {
+        q = b / a;
+        r = b % a;
+        m = xLast - q * x;
+        n = yLast - q * y;
+        xLast = x, yLast = y;
+        x = m, y = n;
+        b = a, a = r;
+    }
+    if(xLast < 0) xLast += tmp;
+    return xLast;
+}
+
+// let m/n = <a_0, a_1, ... , a_n, ...>
+// this returns a_n
+// Precondition: denom > num
+int partial_quotient(int num, int denom, int n)
+{
+    int arr[10000];
+    for(int i = 0; i < n; ++i) {
+        int t = num; num = denom; denom = t;
+        arr[i] = num / denom;
+        num %= denom;
+    }
+
+    return arr[n];
 }
 
 // n-th convergent of continued frac
@@ -19,18 +59,18 @@ std::pair<int, int> convergent(int num, int denom, int n)
         arr[i] = num / denom;
         num %= denom;
     }
-    
+
     int fn = 0, fd = 1;
     for(int i = n - 1; i >= 0; --i) {
         int t = fd;
         fd = arr[i] * fd + fn;
         fn = t;
     }
-    
+
     int _gcd = gcd(fn, fd);
     fn /= _gcd;
     fd /= _gcd;
-    
+
     return std::pair<int, int>(fn, fd);
 }
 
@@ -39,7 +79,7 @@ int powmod(int base, int exp, int mod)
 {
     if(exp == 0) return 1;
     if(exp == 1) return base;
-    
+
     // if exponent even, square result of exponent exp/2
     if(exp % 2 == 0) {
         int k = powmod(base, exp/2, mod);
@@ -57,7 +97,7 @@ int is_qr(int y, int mod)
 {
     if(y == 0 || y == 1) return 1;
     if(y > mod) return is_qr(y % mod, mod);
-    
+
     if(y % 2 == 1 && mod % 2 == 1) {
         if(y % 4 == 3 && mod % 4 == 3)
             return -(is_qr(mod, y));
@@ -65,7 +105,7 @@ int is_qr(int y, int mod)
     } else {
         int pow = 0;
         while(y % 2 == 0) {pow++; y /= 2;}
-        
+
         if(pow % 2 == 0) return is_qr(y, mod);
         else {
             if(mod % 8 == 1 || mod % 8 == 7) return is_qr(y, mod);
@@ -76,14 +116,14 @@ int is_qr(int y, int mod)
 
 // Precondition: p is a prime contained in text input file.
 std::string qr_mod_p(int p)
-{    
+{
     std::string ans = "";
-    
+
     for(int i = 0; i < p; ++i) {
         int res = is_qr(i, p);
         if(res == 1) ans += '1';
         else ans += '0';
     }
-    
+
     return ans;
 }
